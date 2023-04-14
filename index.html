@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="/css/style.min.css">
+    <link rel="stylesheet" href="/css/home.css">
+
+    <script src="/js/home.js"></script>
+
+</head>
+
+<body>
+
+    <header class="header">
+        <div class="container">
+            <nav class="menu">
+                <picture class="logo" style="cursor:pointer;">
+                    <source srcset="https://banketnye-zaly.moscow/img/logo.webp" type="image/webp">
+                    <img src="https://banketnye-zaly.moscow/img/logo.jpg"
+                        onclick="window.location.href='https://banketnye-zaly.moscow'" width="250" height="40">
+                </picture>
+
+                <ul class="dropdown">
+                    <li>
+                        <button class="dropbtn">
+                            <span>Типы</span>
+                            <svg width="14" height="15" viewBox="0 0 14 15" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M11.6199 5.72083L7.81655 9.52416C7.36738 9.97333 6.63238 9.97333 6.18322 9.52416L2.37988 5.72083"
+                                    stroke="#3B71FE" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round"
+                                    stroke-linejoin="round"></path>
+                            </svg>
+                        </button>
+                        <div class="dropdown-content">
+                            <div>
+                                <a href="restoran">В ресторанах</a>
+
+                                <a href="loft">Лофты</a>
+
+                                <a href="oteli">Отели</a>
+
+                                <a href="podmoskovie">В Подмосковье</a>
+
+                                <a href="kottedj">Коттеджи</a>
+
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <button class="dropbtn">
+                            <span>Вместимость</span>
+                            <svg width="14" height="15" viewBox="0 0 14 15" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M11.6199 5.72083L7.81655 9.52416C7.36738 9.97333 6.63238 9.97333 6.18322 9.52416L2.37988 5.72083"
+                                    stroke="#3B71FE" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round"
+                                    stroke-linejoin="round"></path>
+                            </svg>
+                        </button>
+                        <div class="dropdown-content">
+                            <div>
+                                <a href="bolshie">Большие</a>
+
+                                <a href="malenkie">Маленькие</a>
+
+                                <a href="10-chelovek">На 10 человек</a>
+
+                                <a href="15-chelovek">На 15 человек</a>
+
+                                <a href="20-chelovek">На 20 человек</a>
+
+                                <a href="25-chelovek">На 25 человек</a>
+
+                                <a href="30-chelovek">На 30 человек</a>
+
+                                <a href="50-chelovek">На 50 человек</a>
+
+                                <a href="100-chelovek">На 100 человек</a>
+
+                                <a href="200-chelovek">На 200 человек</a>
+
+                                <a href="300-chelovek">На 300 человек</a>
+
+                            </div>
+                        </div>
+                    </li>
+                    <li class="dropbtn"><a href="/metro">Метро</a></li>
+                    <li class="dropbtn"><a href="/map">На карте</a></li>
+                </ul>
+
+                <div class="burger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+
+        <section class="section-home-block">
+
+            <div class="home-block">
+                <div class="home-block__bg">
+                    <picture>
+                        <source media="(min-width: 480px)" srcset="/img/bg_mobile.jpg" sizes="">
+                        <img src="/img/bg_main.jpg" alt="">
+                    </picture>
+                </div>
+                <div class="home-block__content">
+                    <div class="container">
+
+                        <div class="home-block__title">
+                            <h1>Найдем подходящее место!</h1>
+                        </div>
+
+                        <div class="home-block__offer">
+                            Более 100 тысяч мест <br> для проведения мероприятий
+                        </div>
+
+
+                        <div class="home-block__form">
+                            <div class="filter-home">
+                                <div class="filter-home__item">
+                                    <div class="filter-home__subitem">
+                                        <input class="ic_date" type="text" placeholder="Дата">
+                                    </div>
+                                    <div class="filter-home__subitem">
+                                        <input class="ic_guest" type="text" placeholder="Гости">
+                                    </div>
+                                </div>
+                                <div class="filter-home__item">
+                                    <div class="filter-home__subitem">
+                                        <input class="ic_budget" type="text" placeholder="Бюджет">
+                                    </div>
+
+                                </div>
+                                <div class="filter-home__item">
+                                    <div class="filter-home__subitem">
+                                        <select class="" placeholder="Событие" name="" id="">
+                                            <option value="">Новый год</option>
+                                            <option value="">Свадьба</option>
+                                            <option value="">День рождения</option>
+                                            <option value="">Юбилей</option>
+                                            <option value="">Другие праздники</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="filter-home__item">
+                                    <div class="filter-home__subitem">
+                                        <button class="btn" type="submit">Найти</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="home-block__text">
+                            <ul>
+                                <li>Быстрый поиск</li>
+                                <li>Реальные цены</li>
+                                <li>Календарь свободных дат</li>
+                                <li>Проверенные площадки</li>
+                                <li>Популярные локации</li>
+                            </ul>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__inner">
+                <ul class="footer__list">
+                    <li class="footer__list-item" style="list-style: none;">
+                        <a href="https://banketnye-zaly.moscow/contact" class="link"
+                            style="font-size: 16px; position: relative;">Контакты</a>
+                    </li>
+                </ul>
+
+                <small class="footer__copy">Все права защищены © 2022</small>
+            </div>
+        </div>
+    </footer>
+
+
+
+</body>
+
+</html>

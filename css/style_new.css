@@ -1,0 +1,29 @@
+.hall__subtitle {
+    white-space: nowrap;
+    width: 300px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.about__hall-subtitle {
+    white-space: nowrap;
+    width: 500px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.about__hall-subtitle:hover {
+    white-space: normal;
+    overflow: visible;
+    width: 100%;
+}
+
+.hall__location {
+    display: block!important;
+}
+
+.hall__subtitle:hover {
+    white-space: normal;
+    overflow: visible;
+    width: 100%;
+}
