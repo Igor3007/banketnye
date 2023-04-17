@@ -84,7 +84,7 @@ class afSelect {
             _this.reinit(select)
         }
 
-        console.log(select)
+
     }
 
     renderTemplate() {
@@ -221,11 +221,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
 
 
         const dateCurrent = new Date();
-
         const dateStr = dateCurrent.getDate() + '.' + (dateCurrent.getMonth() + 1) + '.' + dateCurrent.getFullYear();
-
-        console.log(dateStr)
-
         const datepicker = new Datepicker(elem, {
             autohide: true,
             language: 'ru',
@@ -236,6 +232,26 @@ document.addEventListener('DOMContentLoaded', function (event) {
 
     }
 
+    /* ======================================= 
+    only number
+    ======================================= */
 
+    if (document.querySelector('[data-input="number"]')) {
+
+        let inputs = document.querySelectorAll('[data-input="number"]');
+
+        inputs.forEach(input => {
+            input.addEventListener('keypress', function (e) {
+                if (e.keyCode != 43 && e.keyCode < 48 || e.keyCode > 57) {
+                    e.preventDefault();
+                }
+                e.target.value = e.target.value.replace(/[^\+\d]/g, '');
+            })
+
+            input.addEventListener('change', function (e) {
+                e.target.value = e.target.value.replace(/[^\+\d]/g, '');
+            })
+        })
+    }
 
 });
