@@ -7,8 +7,6 @@ class afSelect {
         this.clickEventOut()
     }
 
-
-
     reinit(elem) {
         const _this = this;
 
@@ -197,6 +195,47 @@ document.addEventListener('DOMContentLoaded', function (event) {
     const customSelect = new afSelect({
         selector: 'select'
     });
+
+    /* ===================================
+    datepicker
+    ===================================*/
+
+    if (document.querySelector('[data-input="date"]')) {
+
+        const elem = document.querySelector('[data-input="date"]');
+
+        (function () {
+            Datepicker.locales.ru = {
+                days: ["Воскресенье", "Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота"],
+                daysShort: ["Вск", "Пнд", "Втр", "Срд", "Чтв", "Птн", "Суб"],
+                daysMin: ["Вс", "Пн", "Вт", "Ср", "Чт", "Пт", "Сб"],
+                months: ["Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"],
+                monthsShort: ["Янв", "Фев", "Мар", "Апр", "Май", "Июн", "Июл", "Авг", "Сен", "Окт", "Ноя", "Дек"],
+                today: "Сегодня",
+                clear: "Очистить",
+                format: "dd.mm.yyyy",
+                weekStart: 1,
+                monthsTitle: 'Месяцы'
+            }
+        })();
+
+
+        const dateCurrent = new Date();
+
+        const dateStr = dateCurrent.getDate() + '.' + (dateCurrent.getMonth() + 1) + '.' + dateCurrent.getFullYear();
+
+        console.log(dateStr)
+
+        const datepicker = new Datepicker(elem, {
+            autohide: true,
+            language: 'ru',
+            format: 'dd.mm.yyyy',
+            minDate: dateStr
+        });
+
+
+    }
+
 
 
 });

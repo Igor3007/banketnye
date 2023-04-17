@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="/css/style.min.css">
     <link rel="stylesheet" href="/css/home.css">
 
+    <script src="/js/datepicker-full.min.js"></script>
     <script src="/js/home.js"></script>
 
 </head>
@@ -109,12 +110,14 @@
         <section class="section-home-block">
 
             <div class="home-block">
+
                 <div class="home-block__bg">
                     <picture>
-                        <source media="(min-width: 480px)" srcset="/img/bg_mobile.jpg" sizes="">
-                        <img src="/img/bg_main.jpg" alt="">
+                        <source media="(min-width: 480px)" srcset="/img/bg_main.jpg" sizes="">
+                        <img src="/img/bg_mobile.jpg" alt="">
                     </picture>
                 </div>
+
                 <div class="home-block__content">
                     <div class="container">
 
@@ -128,38 +131,46 @@
 
 
                         <div class="home-block__form">
-                            <div class="filter-home">
-                                <div class="filter-home__item">
-                                    <div class="filter-home__subitem">
-                                        <input class="ic_date" type="text" placeholder="Дата">
-                                    </div>
-                                    <div class="filter-home__subitem">
-                                        <input class="ic_guest" type="text" placeholder="Гости">
-                                    </div>
-                                </div>
-                                <div class="filter-home__item">
-                                    <div class="filter-home__subitem">
-                                        <input class="ic_budget" type="text" placeholder="Бюджет">
+                            <form action="/" method="post">
+                                <div class="filter-home">
+                                    <div class="filter-home__item">
+
+                                        <div class="filter-home__subitem">
+                                            <input class="ic_date" type="text" data-input="date" placeholder="Дата">
+                                        </div>
+
+                                        <div class="filter-home__subitem">
+                                            <input class="ic_guest" type="text" data-input="number" placeholder="Гости">
+                                        </div>
+
                                     </div>
 
-                                </div>
-                                <div class="filter-home__item">
-                                    <div class="filter-home__subitem">
-                                        <select class="" placeholder="Событие" name="" id="">
-                                            <option value="">Новый год</option>
-                                            <option value="">Свадьба</option>
-                                            <option value="">День рождения</option>
-                                            <option value="">Юбилей</option>
-                                            <option value="">Другие праздники</option>
-                                        </select>
+                                    <div class="filter-home__item">
+
+                                        <div class="filter-home__subitem">
+                                            <input class="ic_budget" type="text" data-input="number"
+                                                placeholder="Бюджет">
+                                        </div>
+
+                                    </div>
+                                    <div class="filter-home__item">
+                                        <div class="filter-home__subitem">
+                                            <select class="" placeholder="Событие" name="" id="">
+                                                <option value="">Новый год</option>
+                                                <option value="">Свадьба</option>
+                                                <option value="">День рождения</option>
+                                                <option value="">Юбилей</option>
+                                                <option value="">Другие праздники</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="filter-home__item">
+                                        <div class="filter-home__subitem">
+                                            <button class="btn" type="submit">Найти</button>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="filter-home__item">
-                                    <div class="filter-home__subitem">
-                                        <button class="btn" type="submit">Найти</button>
-                                    </div>
-                                </div>
-                            </div>
+                            </form>
                         </div>
 
                         <div class="home-block__text">
