@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="/css/style.min.css">
+    <link rel="stylesheet" href="/css/css.css">
+    <link rel="stylesheet" href="/css/details.css">
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"
+        integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"
+        integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="/js/details.js"></script>
+
+</head>
+
+<body>
+
+    <header class="header">
+        <div class="container">
+            <nav class="menu">
+                <picture class="logo" style="cursor:pointer;">
+                    <source srcset="https://banketnye-zaly.moscow/img/logo.webp" type="image/webp">
+                    <img src="https://banketnye-zaly.moscow/img/logo.jpg"
+                        onclick="window.location.href='https://banketnye-zaly.moscow'" width="250" height="40">
+                </picture>
+
+                <ul class="dropdown">
+                    <li>
+                        <button class="dropbtn">
+                            <span>Типы</span>
+                            <svg width="14" height="15" viewBox="0 0 14 15" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M11.6199 5.72083L7.81655 9.52416C7.36738 9.97333 6.63238 9.97333 6.18322 9.52416L2.37988 5.72083"
+                                    stroke="#3B71FE" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round"
+                                    stroke-linejoin="round"></path>
+                            </svg>
+                        </button>
+                        <div class="dropdown-content">
+                            <div>
+                                <a href="restoran">В ресторанах</a>
+
+                                <a href="loft">Лофты</a>
+
+                                <a href="oteli">Отели</a>
+
+                                <a href="podmoskovie">В Подмосковье</a>
+
+                                <a href="kottedj">Коттеджи</a>
+
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <button class="dropbtn">
+                            <span>Вместимость</span>
+                            <svg width="14" height="15" viewBox="0 0 14 15" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M11.6199 5.72083L7.81655 9.52416C7.36738 9.97333 6.63238 9.97333 6.18322 9.52416L2.37988 5.72083"
+                                    stroke="#3B71FE" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round"
+                                    stroke-linejoin="round"></path>
+                            </svg>
+                        </button>
+                        <div class="dropdown-content">
+                            <div>
+                                <a href="bolshie">Большие</a>
+
+                                <a href="malenkie">Маленькие</a>
+
+                                <a href="10-chelovek">На 10 человек</a>
+
+                                <a href="15-chelovek">На 15 человек</a>
+
+                                <a href="20-chelovek">На 20 человек</a>
+
+                                <a href="25-chelovek">На 25 человек</a>
+
+                                <a href="30-chelovek">На 30 человек</a>
+
+                                <a href="50-chelovek">На 50 человек</a>
+
+                                <a href="100-chelovek">На 100 человек</a>
+
+                                <a href="200-chelovek">На 200 человек</a>
+
+                                <a href="300-chelovek">На 300 человек</a>
+
+                            </div>
+                        </div>
+                    </li>
+                    <li class="dropbtn"><a href="/metro">Метро</a></li>
+                    <li class="dropbtn"><a href="/map">На карте</a></li>
+                    <li class="dropbtn"><a href="#" data-popup="auth">Войти</a></li>
+                </ul>
+
+                <div class="burger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <div class="mobile-menu">
+        <div class="mobile-menu__header">
+            <div class="burger open">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        <ul class="mobile-menu__nav">
+            <li>
+                <span>Типы</span>
+                <svg width="14" height="15" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M11.6199 5.72083L7.81655 9.52416C7.36738 9.97333 6.63238 9.97333 6.18322 9.52416L2.37988 5.72083"
+                        stroke="#3B71FE" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round"
+                        stroke-linejoin="round"></path>
+                </svg>
+                <div class="submenu">
+                    <a href="restoran">В ресторанах</a>
+                    <a href="loft">Лофты</a>
+                    <a href="oteli">Отели</a>
+                    <a href="podmoskovie">В Подмосковье</a>
+                    <a href="kottedj">Коттеджи</a>
+                </div>
+            </li>
+            <li>
+                <span>Вместимость</span>
+                <svg width="14" height="15" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M11.6199 5.72083L7.81655 9.52416C7.36738 9.97333 6.63238 9.97333 6.18322 9.52416L2.37988 5.72083"
+                        stroke="#3B71FE" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round"
+                        stroke-linejoin="round"></path>
+                </svg>
+                <div class="submenu">
+                    <a href="bolshie">Большие</a>
+                    <a href="malenkie">Маленькие</a>
+                    <a href="10-chelovek">На 10 человек</a>
+                    <a href="15-chelovek">На 15 человек</a>
+                    <a href="20-chelovek">На 20 человек</a>
+                    <a href="25-chelovek">На 25 человек</a>
+                    <a href="30-chelovek">На 30 человек</a>
+                    <a href="50-chelovek">На 50 человек</a>
+                    <a href="100-chelovek">На 100 человек</a>
+                    <a href="200-chelovek">На 200 человек</a>
+                    <a href="300-chelovek">На 300 человек</a>
+                </div>
+            </li>
+            <li>
+                <a href="/metro">Метро</a>
+
+            </li>
+            <li>
+                <a href="/map">На карте</a>
+
+            </li>
+
+            <li><a href="#" data-popup="auth">Войти</a></li>
+        </ul>
+        <div class="mobile-menu__footer">
+
+        </div>
+    </div>
+
+    <main class="main-gray">
+
+        <div class="section-details-gallery">
+            <div class="container">
+
+                <div class="page-details">
+                    <div class="page-details__content">
+                        <div class="details-gallery">
+                            <div class="details-gallery__image">
+                                <div class="details-gallery__slider" data-slider="slick-gallery">
+                                    <div class="details-gallery__item">
+                                        <picture>
+                                            <source type="image/webp">
+                                            <img src="https://banketnye-zaly.moscow/storage/4dMkxMraro_1627937172.jpg"
+                                                alt="">
+                                        </picture>
+                                    </div>
+                                    <div class="details-gallery__item">
+                                        <picture>
+                                            <source type="image/webp">
+                                            <img src="https://banketnye-zaly.moscow/storage/4dMkxMraro_1627937172.jpg"
+                                                alt="">
+                                        </picture>
+                                    </div>
+                                </div>
+
+                                <div class="details-gallery__all">
+                                    <span class="">Все 25 фото</span>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="details-back">
+                            <a href="http://"> Назад к списку залов </a>
+                        </div>
+
+                        <div class="details-main">
+                            <div class="details-main__title">
+                                <h1>Ресторан «Золотой фазан»</h1>
+                            </div>
+                            <div class="details-main__subtitle"> Парк-отель Орловский</div>
+                            <div class="details-main__prop">
+                                <div class="details-main__address">
+                                    <div class="prop-item">
+                                        <div class="prop-item__icon">
+                                            <span class="ic_24 ic_pin"></span>
+                                        </div>
+                                        <div class="prop-item__main">
+                                            <div class="prop-item__label">Адрес:</div>
+                                            <div class="prop-item__value">Россия, Московская область, Ленинский
+                                                городской округ,
+                                                деревня Дальние Прудищи, Орловский проезд, 12</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="details-main__all">
+                                    <div class="details-main__list">
+                                        <div class="details-main__item">
+
+                                            <div class="prop-item">
+                                                <div class="prop-item__icon">
+                                                    <span class="ic_24 ic_guest"></span>
+                                                </div>
+                                                <div class="prop-item__main">
+                                                    <div class="prop-item__label">Гости:</div>
+                                                    <div class="prop-item__value">От 2 до 1000 человек</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="details-main__item">
+
+                                            <div class="prop-item">
+                                                <div class="prop-item__icon">
+                                                    <span class="ic_24 ic_home"></span>
+                                                </div>
+                                                <div class="prop-item__main">
+                                                    <div class="prop-item__label">Тип помещения:</div>
+                                                    <div class="prop-item__value"> Банкетный зал</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="details-main__item">
+
+                                            <div class="prop-item">
+                                                <div class="prop-item__icon">
+                                                    <span class="ic_24 ic_parking"></span>
+                                                </div>
+                                                <div class="prop-item__main">
+                                                    <div class="prop-item__label">Парковочных мест:</div>
+                                                    <div class="prop-item__value">40 </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+
+                                <div class="details-main__avantages">
+                                    <div class="prop-item">
+                                        <div class="prop-item__icon">
+                                            <span class="ic_24 ic_features"></span>
+                                        </div>
+                                        <div class="prop-item__main">
+                                            <div class="prop-item__label">Особенности:</div>
+                                            <div class="prop-item__value">
+                                                <ul>
+                                                    <li>Караоке</li>
+                                                    <li>Живая музыка</li>
+                                                    <li>Без арендной платы</li>
+                                                    <li>Можно со своей едой</li>
+                                                    <li>Можно со своим алкоголем</li>
+                                                    <li>Детская комната</li>
+                                                    <li>Панорамный вид</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+
+
+                            </div>
+                            <div class="details-main__desc">
+                                «Золотой фазан» — это полноценный ресторан на природе. Он подойдет и любителям
+                                спокойной
+                                атмосферы, и приверженцам активного отдыха в любое время года. Банкетная площадка
+                                «Золотой
+                                фазан» — это отдельная бухта общей площадью 1500 м кв, предназначенная для
+                                проведения
+                                мероприятий. Всесезонный белоснежный шатер с видом на гладь озера Людовна дарит
+                                гостям уют и
+                                душевный комфорт, но во всем своем великолепии он предстает именно зимой:
+                                заснеженный
+                                русский пейзаж, березовая роща, деревянный частокол и ледяное зеркало озера — всё
+                                это
+                                создает уникальную атмосферу загадочной русской души.
+                            </div>
+                        </div>
+
+                        <div class="details-map">
+                            <div class="details-map__title">Ресторан на карте</div>
+                            <div class="details-map__container">
+                                <div id="map"></div>
+                            </div>
+                        </div>
+
+                        <script>
+                            function loadMap() {
+                                var script = document.createElement('script');
+                                script.src =
+                                    "https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;apikey=ee01361a-bfe3-4317-9569-703553c8f8d8&load=Map,Placemark";
+                                script.onload = function () {
+
+                                    ! function (e, t) {
+                                        "object" == typeof exports && "object" == typeof module ? module.exports =
+                                            t() : "function" == typeof define && define.amd ? define([], t) :
+                                            "object" == typeof exports ? exports.ymapsTouchScroll = t() : e
+                                            .ymapsTouchScroll = t()
+                                    }(window, function () {
+                                        return function (e) {
+                                            var t = {};
+
+                                            function n(o) {
+                                                if (t[o]) return t[o].exports;
+                                                var r = t[o] = {
+                                                    i: o,
+                                                    l: !1,
+                                                    exports: {}
+                                                };
+                                                return e[o].call(r.exports, r, r.exports, n), r.l = !0, r
+                                                    .exports
+                                            }
+                                            return n.m = e, n.c = t, n.d = function (e, t, o) {
+                                                n.o(e, t) || Object.defineProperty(e, t, {
+                                                    enumerable: !0,
+                                                    get: o
+                                                })
+                                            }, n.r = function (e) {
+                                                "undefined" != typeof Symbol && Symbol.toStringTag &&
+                                                    Object.defineProperty(e, Symbol.toStringTag, {
+                                                        value: "Module"
+                                                    }), Object.defineProperty(e, "__esModule", {
+                                                        value: !0
+                                                    })
+                                            }, n.t = function (e, t) {
+                                                if (1 & t && (e = n(e)), 8 & t) return e;
+                                                if (4 & t && "object" == typeof e && e && e.__esModule)
+                                                    return e;
+                                                var o = Object.create(null);
+                                                if (n.r(o), Object.defineProperty(o, "default", {
+                                                        enumerable: !0,
+                                                        value: e
+                                                    }), 2 & t && "string" != typeof e)
+                                                    for (var r in e) n.d(o, r, function (t) {
+                                                        return e[t]
+                                                    }.bind(null, r));
+                                                return o
+                                            }, n.n = function (e) {
+                                                var t = e && e.__esModule ? function () {
+                                                    return e.default
+                                                } : function () {
+                                                    return e
+                                                };
+                                                return n.d(t, "a", t), t
+                                            }, n.o = function (e, t) {
+                                                return Object.prototype.hasOwnProperty.call(e, t)
+                                            }, n.p = "", n(n.s = 0)
+                                        }([function (e, t, n) {
+                                            "use strict";
+
+                                            function o(e) {
+                                                return (o = "function" == typeof Symbol &&
+                                                    "symbol" == typeof Symbol.iterator ?
+                                                    function (e) {
+                                                        return typeof e
+                                                    } : function (e) {
+                                                        return e && "function" ==
+                                                            typeof Symbol && e.constructor ===
+                                                            Symbol && e !== Symbol.prototype ?
+                                                            "symbol" : typeof e
+                                                    })(e)
+                                            }
+                                            n.r(t);
+                                            t.default = function (e) {
+                                                var t = arguments.length > 1 && void 0 !==
+                                                    arguments[1] ? arguments[1] : {},
+                                                    n = t.preventScroll,
+                                                    r = void 0 === n || n,
+                                                    u = t.preventTouch,
+                                                    i = void 0 === u || u,
+                                                    c = t.textScroll,
+                                                    f = void 0 === c ?
+                                                    "Чтобы изменить масштаб, прокручивайте карту, удерживая клавишу Ctrl" :
+                                                    c,
+                                                    d = t.textTouch,
+                                                    a = void 0 === d ?
+                                                    "Чтобы переместить карту проведите по ней двумя пальцами" :
+                                                    d;
+                                                if ("undefined" != typeof window && "object" ===
+                                                    o(e) && (r || i) && "string" == typeof f &&
+                                                    "string" == typeof a) {
+                                                    var l = /Mobi/i.test(navigator.userAgent) ||
+                                                        /Android/i.test(navigator.userAgent),
+                                                        s = e.panes.get("events"),
+                                                        p = s.getElement(),
+                                                        y = l ? a : f,
+                                                        b = {
+                                                            alignItems: "center",
+                                                            boxSizing: "border-box",
+                                                            color: "#fff",
+                                                            display: "flex",
+                                                            justifyContent: "center",
+                                                            padding: "40px",
+                                                            textAlign: "center",
+                                                            transition: "background .2s",
+                                                            touchAction: "auto"
+                                                        };
+                                                    Object.keys(b).forEach(function (e) {
+                                                        p.style[e] = b[e]
+                                                    });
+                                                    var v = function (e) {
+                                                        p.style.background =
+                                                            "rgba(0, 0, 0, ".concat(e ?
+                                                                ".6" : "0", ")"), p
+                                                            .textContent = e ? y : ""
+                                                    };
+                                                    if (i && l && (e.behaviors.disable("drag"),
+                                                            ymaps.domEvent.manager.add(p,
+                                                                "touchmove",
+                                                                function (e) {
+                                                                    v(1 === e.get("touches")
+                                                                        .length)
+                                                                }), ymaps.domEvent.manager.add(
+                                                                p, "touchend",
+                                                                function () {
+                                                                    v(!1)
+                                                                })), r && !l) {
+                                                        var m = function (t) {
+                                                                t ? e.behaviors.enable(
+                                                                        "scrollZoom") : e
+                                                                    .behaviors.disable(
+                                                                        "scrollZoom")
+                                                            },
+                                                            g = !1,
+                                                            x = !1;
+                                                        m(!1), s.events.add("wheel",
+                                                            function () {
+                                                                g && (m(x), v(!x))
+                                                            }), s.events.add("mousedown",
+                                                            function () {
+                                                                v(!1)
+                                                            }), s.events.add("mouseenter",
+                                                            function () {
+                                                                g = !0
+                                                            }), s.events.add("mouseleave",
+                                                            function () {
+                                                                g = !1, v(!1)
+                                                            }), document.addEventListener(
+                                                            "keydown",
+                                                            function (e) {
+                                                                (x = e.ctrlKey) && v(!1)
+                                                            }), document.addEventListener(
+                                                            "keyup",
+                                                            function () {
+                                                                x = !1
+                                                            })
+                                                    }
+                                                }
+                                            }
+                                        }]).default
+                                    });
+
+                                    ymaps.ready(init);
+
+                                    function init() {
+                                        var myMap = new ymaps.Map("map", {
+                                                center: ['55.754535', '37.626670'],
+                                                zoom: 11
+                                            }),
+
+                                            myPlacemark1 = new ymaps.Placemark(['55.754535', '37.626670'], {
+                                                // Свойства.
+                                                // Содержимое хинта.
+                                            })
+                                        myMap.geoObjects.add(myPlacemark1)
+
+                                        ymapsTouchScroll(myMap);
+
+                                    }
+                                }
+                                document.body.appendChild(script);
+                                document.removeEventListener('scroll', loadMap);
+                            }
+                            document.addEventListener('scroll', loadMap);
+                        </script>
+
+                        <div class="details-review">
+                            <div class="details-review__title">Отзывы</div>
+                            <div class="details-review__badge">
+                                <div class="review-badge">
+                                    <div class="review-badge__common">
+                                        <div class="review-badge__grade">4.8</div>
+                                        <div class="review-badge__stars">
+                                            <div>
+                                                <ul class="static-rating">
+                                                    <li><span class="ic_star"></span></li>
+                                                    <li><span class="ic_star"></span></li>
+                                                    <li><span class="ic_star"></span></li>
+                                                    <li><span class="ic_star"></span></li>
+                                                    <li><span class="ic_star"></span></li>
+                                                </ul>
+                                            </div>
+                                            <div>451 оценок</div>
+                                        </div>
+                                    </div>
+                                    <div class="review-badge__add">
+                                        <div class="review-badge__text">Уже были здесь? Оцените и напишите отзыв:</div>
+                                        <div class="review-badge__stars">
+                                            <div class="select-rating">
+                                                <label class=""><input type="radio" value="1" name="rating">
+                                                    <span class="ic_star"></span>
+                                                </label>
+                                                <label class=""><input type="radio" value="2" name="rating">
+                                                    <span class="ic_star"></span>
+                                                </label>
+                                                <label class=""><input type="radio" value="3" name="rating">
+                                                    <span class="ic_star"></span>
+                                                </label>
+                                                <label class=""><input type="radio" value="4" name="rating">
+                                                    <span class="ic_star"></span>
+                                                </label>
+                                                <label class=""><input type="radio" value="5" name="rating">
+                                                    <span class="ic_star"></span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="details-review__slider">
+
+                                <div class="reviews">
+                                    <div class="reviews__wrapper">
+                                        <div class="reviews__items">
+
+                                            <div class="reviews__item">
+                                                <div class="reviews__item-avatar">
+                                                    <img loading="lazy"
+                                                        src="https://banketnye-zaly.moscow/storage/xM6QBR6YUz_1627935759.jpg"
+                                                        alt="">
+                                                </div>
+                                                <p class="reviews__item-name">Животворева Людмила</p>
+                                                <p class="reviews__item-message">Замечательные выходные 24-26.07.2020 г!
+                                                    Я,
+                                                    солистка
+                                                    казачьего ансамбля "ВАР", выступала несколько раз в парке-отеле
+                                                    "Орловский"
+                                                    и
+                                                    приехала сюда отдыхать с мужем. Мы в восторге от этого чудесного
+                                                    места! Нас
+                                                    встретили очень приветливо на ресепшене, все рассказали и выдали
+                                                    карты от
+                                                    номера.
+                                                    Заселились мы в чудесный 2х местный номер, в котором было все, что
+                                                    нужно:
+                                                    белые
+                                                    халаты, полотенца, тапочки, фен, мини-бар. Вкусно кормили, меню
+                                                    разнообразное. И
+                                                    даже попали на коктейльную вечеринку с очень вкусным шашлыко,
+                                                    который
+                                                    готовили
+                                                    на
+                                                    наших глазах. Плавали в бассейне с джакузи, очень понравился хамам и
+                                                    сауна.
+                                                    Так
+                                                    как
+                                                    мы любим петь, м удовольствием посетили караоке. Аппаратура неплохая
+                                                    да и
+                                                    компания
+                                                    нам попалась очень веселая</p>
+                                                <button class="reviews__item-btn">Читать дальше <span
+                                                        class="ic_24 ic_arrow"></span></button>
+
+                                                <div class="stars reviews__stars">
+
+                                                    <svg class="svg star reviews__star" width="20" height="19"
+                                                        viewBox="0 0 20 19" fill="none"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <path
+                                                            d="M9.11428 0.689943C9.48869 -0.024433 10.5113 -0.0244343 10.8857 0.689942L13.1194 4.95169C13.2642 5.22804 13.5297 5.42095 13.8373 5.4733L18.5807 6.28066C19.3758 6.416 19.6918 7.38856 19.1281 7.9654L15.7652 11.4067C15.5471 11.6298 15.4457 11.942 15.4909 12.2506L16.1889 17.0114C16.3059 17.8094 15.4786 18.4105 14.7558 18.0526L10.4437 15.9177C10.1641 15.7792 9.8359 15.7792 9.5563 15.9177L5.24425 18.0526C4.52144 18.4105 3.69413 17.8094 3.81112 17.0114L4.50906 12.2507C4.55432 11.942 4.4529 11.6298 4.23484 11.4067L0.871907 7.96541C0.308195 7.38856 0.624199 6.416 1.41931 6.28066L6.16271 5.4733C6.47029 5.42095 6.7358 5.22804 6.88064 4.95169L9.11428 0.689943Z"
+                                                            fill="#3B71FE" />
+                                                    </svg>
+                                                    <svg class="svg star reviews__star" width="20" height="19"
+                                                        viewBox="0 0 20 19" fill="none"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <path
+                                                            d="M9.11428 0.689943C9.48869 -0.024433 10.5113 -0.0244343 10.8857 0.689942L13.1194 4.95169C13.2642 5.22804 13.5297 5.42095 13.8373 5.4733L18.5807 6.28066C19.3758 6.416 19.6918 7.38856 19.1281 7.9654L15.7652 11.4067C15.5471 11.6298 15.4457 11.942 15.4909 12.2506L16.1889 17.0114C16.3059 17.8094 15.4786 18.4105 14.7558 18.0526L10.4437 15.9177C10.1641 15.7792 9.8359 15.7792 9.5563 15.9177L5.24425 18.0526C4.52144 18.4105 3.69413 17.8094 3.81112 17.0114L4.50906 12.2507C4.55432 11.942 4.4529 11.6298 4.23484 11.4067L0.871907 7.96541C0.308195 7.38856 0.624199 6.416 1.41931 6.28066L6.16271 5.4733C6.47029 5.42095 6.7358 5.22804 6.88064 4.95169L9.11428 0.689943Z"
+                                                            fill="#3B71FE" />
+                                                    </svg>
+                                                    <svg class="svg star reviews__star" width="20" height="19"
+                                                        viewBox="0 0 20 19" fill="none"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <path
+                                                            d="M9.11428 0.689943C9.48869 -0.024433 10.5113 -0.0244343 10.8857 0.689942L13.1194 4.95169C13.2642 5.22804 13.5297 5.42095 13.8373 5.4733L18.5807 6.28066C19.3758 6.416 19.6918 7.38856 19.1281 7.9654L15.7652 11.4067C15.5471 11.6298 15.4457 11.942 15.4909 12.2506L16.1889 17.0114C16.3059 17.8094 15.4786 18.4105 14.7558 18.0526L10.4437 15.9177C10.1641 15.7792 9.8359 15.7792 9.5563 15.9177L5.24425 18.0526C4.52144 18.4105 3.69413 17.8094 3.81112 17.0114L4.50906 12.2507C4.55432 11.942 4.4529 11.6298 4.23484 11.4067L0.871907 7.96541C0.308195 7.38856 0.624199 6.416 1.41931 6.28066L6.16271 5.4733C6.47029 5.42095 6.7358 5.22804 6.88064 4.95169L9.11428 0.689943Z"
+                                                            fill="#3B71FE" />
+                                                    </svg>
+                                                    <svg class="svg star reviews__star" width="20" height="19"
+                                                        viewBox="0 0 20 19" fill="none"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <path
+                                                            d="M9.11428 0.689943C9.48869 -0.024433 10.5113 -0.0244343 10.8857 0.689942L13.1194 4.95169C13.2642 5.22804 13.5297 5.42095 13.8373 5.4733L18.5807 6.28066C19.3758 6.416 19.6918 7.38856 19.1281 7.9654L15.7652 11.4067C15.5471 11.6298 15.4457 11.942 15.4909 12.2506L16.1889 17.0114C16.3059 17.8094 15.4786 18.4105 14.7558 18.0526L10.4437 15.9177C10.1641 15.7792 9.8359 15.7792 9.5563 15.9177L5.24425 18.0526C4.52144 18.4105 3.69413 17.8094 3.81112 17.0114L4.50906 12.2507C4.55432 11.942 4.4529 11.6298 4.23484 11.4067L0.871907 7.96541C0.308195 7.38856 0.624199 6.416 1.41931 6.28066L6.16271 5.4733C6.47029 5.42095 6.7358 5.22804 6.88064 4.95169L9.11428 0.689943Z"
+                                                            fill="#3B71FE" />
+                                                    </svg>
+                                                    <svg class="svg star reviews__star" width="20" height="19"
+                                                        viewBox="0 0 20 19" fill="none"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <path
+                                                            d="M9.11428 0.689943C9.48869 -0.024433 10.5113 -0.0244343 10.8857 0.689942L13.1194 4.95169C13.2642 5.22804 13.5297 5.42095 13.8373 5.4733L18.5807 6.28066C19.3758 6.416 19.6918 7.38856 19.1281 7.9654L15.7652 11.4067C15.5471 11.6298 15.4457 11.942 15.4909 12.2506L16.1889 17.0114C16.3059 17.8094 15.4786 18.4105 14.7558 18.0526L10.4437 15.9177C10.1641 15.7792 9.8359 15.7792 9.5563 15.9177L5.24425 18.0526C4.52144 18.4105 3.69413 17.8094 3.81112 17.0114L4.50906 12.2507C4.55432 11.942 4.4529 11.6298 4.23484 11.4067L0.871907 7.96541C0.308195 7.38856 0.624199 6.416 1.41931 6.28066L6.16271 5.4733C6.47029 5.42095 6.7358 5.22804 6.88064 4.95169L9.11428 0.689943Z"
+                                                            fill="#3B71FE" />
+                                                    </svg>
+
+                                                </div>
+                                            </div>
+
+                                            <div class="reviews__item">
+                                                <div class="reviews__item-avatar">
+                                                    <img loading="lazy"
+                                                        src="https://banketnye-zaly.moscow/storage/xM6QBR6YUz_1627935759.jpg"
+                                                        alt="">
+                                                </div>
+                                                <p class="reviews__item-name">Животворева Людмила</p>
+                                                <p class="reviews__item-message">Замечательные выходные 24-26.07.2020 г!
+                                                    Я,
+                                                    солистка
+                                                    казачьего ансамбля "ВАР", выступала несколько раз в парке-отеле
+                                                    "Орловский"
+                                                    и
+                                                    приехала сюда отдыхать с мужем. Мы в восторге от этого чудесного
+                                                    места! Нас
+                                                    встретили очень приветливо на ресепшене, все рассказали и выдали
+                                                    карты от
+                                                    номера.
+                                                    Заселились мы в чудесный 2х местный номер, в котором было все, что
+                                                    нужно:
+                                                    белые
+                                                    халаты, полотенца, тапочки, фен, мини-бар. Вкусно кормили, меню
+                                                    разнообразное. И
+                                                    даже попали на коктейльную вечеринку с очень вкусным шашлыко,
+                                                    который
+                                                    готовили
+                                                    на
+                                                    наших глазах. Плавали в бассейне с джакузи, очень понравился хамам и
+                                                    сауна.
+                                                    Так
+                                                    как
+                                                    мы любим петь, м удовольствием посетили караоке. Аппаратура неплохая
+                                                    да и
+                                                    компания
+                                                    нам попалась очень веселая</p>
+                                                <button class="reviews__item-btn">Читать дальше <span
+                                                        class="ic_24 ic_arrow"></span></button>
+                                                <div class="stars reviews__stars">
+
+                                                    <svg class="svg star reviews__star" width="20" height="19"
+                                                        viewBox="0 0 20 19" fill="none"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <path
+                                                            d="M9.11428 0.689943C9.48869 -0.024433 10.5113 -0.0244343 10.8857 0.689942L13.1194 4.95169C13.2642 5.22804 13.5297 5.42095 13.8373 5.4733L18.5807 6.28066C19.3758 6.416 19.6918 7.38856 19.1281 7.9654L15.7652 11.4067C15.5471 11.6298 15.4457 11.942 15.4909 12.2506L16.1889 17.0114C16.3059 17.8094 15.4786 18.4105 14.7558 18.0526L10.4437 15.9177C10.1641 15.7792 9.8359 15.7792 9.5563 15.9177L5.24425 18.0526C4.52144 18.4105 3.69413 17.8094 3.81112 17.0114L4.50906 12.2507C4.55432 11.942 4.4529 11.6298 4.23484 11.4067L0.871907 7.96541C0.308195 7.38856 0.624199 6.416 1.41931 6.28066L6.16271 5.4733C6.47029 5.42095 6.7358 5.22804 6.88064 4.95169L9.11428 0.689943Z"
+                                                            fill="#3B71FE" />
+                                                    </svg>
+                                                    <svg class="svg star reviews__star" width="20" height="19"
+                                                        viewBox="0 0 20 19" fill="none"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <path
+                                                            d="M9.11428 0.689943C9.48869 -0.024433 10.5113 -0.0244343 10.8857 0.689942L13.1194 4.95169C13.2642 5.22804 13.5297 5.42095 13.8373 5.4733L18.5807 6.28066C19.3758 6.416 19.6918 7.38856 19.1281 7.9654L15.7652 11.4067C15.5471 11.6298 15.4457 11.942 15.4909 12.2506L16.1889 17.0114C16.3059 17.8094 15.4786 18.4105 14.7558 18.0526L10.4437 15.9177C10.1641 15.7792 9.8359 15.7792 9.5563 15.9177L5.24425 18.0526C4.52144 18.4105 3.69413 17.8094 3.81112 17.0114L4.50906 12.2507C4.55432 11.942 4.4529 11.6298 4.23484 11.4067L0.871907 7.96541C0.308195 7.38856 0.624199 6.416 1.41931 6.28066L6.16271 5.4733C6.47029 5.42095 6.7358 5.22804 6.88064 4.95169L9.11428 0.689943Z"
+                                                            fill="#3B71FE" />
+                                                    </svg>
+                                                    <svg class="svg star reviews__star" width="20" height="19"
+                                                        viewBox="0 0 20 19" fill="none"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <path
+                                                            d="M9.11428 0.689943C9.48869 -0.024433 10.5113 -0.0244343 10.8857 0.689942L13.1194 4.95169C13.2642 5.22804 13.5297 5.42095 13.8373 5.4733L18.5807 6.28066C19.3758 6.416 19.6918 7.38856 19.1281 7.9654L15.7652 11.4067C15.5471 11.6298 15.4457 11.942 15.4909 12.2506L16.1889 17.0114C16.3059 17.8094 15.4786 18.4105 14.7558 18.0526L10.4437 15.9177C10.1641 15.7792 9.8359 15.7792 9.5563 15.9177L5.24425 18.0526C4.52144 18.4105 3.69413 17.8094 3.81112 17.0114L4.50906 12.2507C4.55432 11.942 4.4529 11.6298 4.23484 11.4067L0.871907 7.96541C0.308195 7.38856 0.624199 6.416 1.41931 6.28066L6.16271 5.4733C6.47029 5.42095 6.7358 5.22804 6.88064 4.95169L9.11428 0.689943Z"
+                                                            fill="#3B71FE" />
+                                                    </svg>
+                                                    <svg class="svg star reviews__star" width="20" height="19"
+                                                        viewBox="0 0 20 19" fill="none"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <path
+                                                            d="M9.11428 0.689943C9.48869 -0.024433 10.5113 -0.0244343 10.8857 0.689942L13.1194 4.95169C13.2642 5.22804 13.5297 5.42095 13.8373 5.4733L18.5807 6.28066C19.3758 6.416 19.6918 7.38856 19.1281 7.9654L15.7652 11.4067C15.5471 11.6298 15.4457 11.942 15.4909 12.2506L16.1889 17.0114C16.3059 17.8094 15.4786 18.4105 14.7558 18.0526L10.4437 15.9177C10.1641 15.7792 9.8359 15.7792 9.5563 15.9177L5.24425 18.0526C4.52144 18.4105 3.69413 17.8094 3.81112 17.0114L4.50906 12.2507C4.55432 11.942 4.4529 11.6298 4.23484 11.4067L0.871907 7.96541C0.308195 7.38856 0.624199 6.416 1.41931 6.28066L6.16271 5.4733C6.47029 5.42095 6.7358 5.22804 6.88064 4.95169L9.11428 0.689943Z"
+                                                            fill="#3B71FE" />
+                                                    </svg>
+                                                    <svg class="svg star reviews__star" width="20" height="19"
+                                                        viewBox="0 0 20 19" fill="none"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <path
+                                                            d="M9.11428 0.689943C9.48869 -0.024433 10.5113 -0.0244343 10.8857 0.689942L13.1194 4.95169C13.2642 5.22804 13.5297 5.42095 13.8373 5.4733L18.5807 6.28066C19.3758 6.416 19.6918 7.38856 19.1281 7.9654L15.7652 11.4067C15.5471 11.6298 15.4457 11.942 15.4909 12.2506L16.1889 17.0114C16.3059 17.8094 15.4786 18.4105 14.7558 18.0526L10.4437 15.9177C10.1641 15.7792 9.8359 15.7792 9.5563 15.9177L5.24425 18.0526C4.52144 18.4105 3.69413 17.8094 3.81112 17.0114L4.50906 12.2507C4.55432 11.942 4.4529 11.6298 4.23484 11.4067L0.871907 7.96541C0.308195 7.38856 0.624199 6.416 1.41931 6.28066L6.16271 5.4733C6.47029 5.42095 6.7358 5.22804 6.88064 4.95169L9.11428 0.689943Z"
+                                                            fill="#3B71FE" />
+                                                    </svg>
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="page-details__form">
+
+                        <div class="contact-form">
+                            <h2>Без арендной платы</h2>
+                        </div>
+
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__inner">
+                <ul class="footer__list">
+                    <li class="footer__list-item" style="list-style: none;">
+                        <a href="https://banketnye-zaly.moscow/contact" class="link"
+                            style="font-size: 16px; position: relative;">Контакты</a>
+                    </li>
+                </ul>
+
+                <small class="footer__copy">Все права защищены © 2022</small>
+            </div>
+        </div>
+    </footer>
+
+
+
+</body>
+
+</html>
