@@ -610,8 +610,41 @@ body .header {
 
         &__form {
             padding-left: 24px;
-            width: 100%;
+            width: 34.1%;
             flex-grow: 1;
+
+            & .btn {
+                height: 52px;
+                width: 100%;
+                font-weight: bold;
+            }
+
+            & .sidebar-form {
+                @media screen and (min-width: $w992) {
+                    padding-left: 30px;
+                    padding-right: 30px;
+                    padding-top: 32px;
+                    padding-bottom: 35px;
+                }
+            }
+
+            & .sidebar-form {
+
+
+
+                &__title {
+                    @include font-h2;
+                    margin-bottom: 0;
+                }
+
+                &__desc {
+                    margin-bottom: 30px;
+                    text-align: center;
+                    line-height: 140%;
+                }
+
+
+            }
 
         }
     }
@@ -1021,7 +1054,7 @@ body .header {
         position: relative;
 
         @media screen and (min-width: $w576) {
-            padding-top: 65%;
+            padding-top: 50%;
         }
 
         & #map {
@@ -1390,5 +1423,93 @@ body .header {
             display: inline-block;
             @include bgimage-contain;
         }
+    }
+}
+
+
+.details-gallery__slider:not(.slick-initialized) .details-gallery__item {
+    display: none;
+}
+
+.details-gallery__slider:not(.slick-initialized) .details-gallery__item:first-child {
+    display: block;
+}
+
+
+
+.more-halls.more-hall--white {
+    background-color: #fff;
+    padding-top: 50px;
+
+    & .more-halls__title {
+        @include font-h2;
+        margin-bottom: 0;
+    }
+}
+
+.reviews__item {
+    border: 0;
+    -webkit-box-shadow: 0;
+    box-shadow: 0;
+}
+
+.af-gallery {
+    max-width: 100%;
+    width: 100vw;
+    margin: 0 auto;
+
+    @media screen and (min-width: $w480) {
+        max-width: 90%;
+    }
+
+    &__item {
+        height: 90vh;
+        position: relative;
+        margin: 0 4px;
+
+        @media screen and (min-width: $w480) {
+            margin: 0;
+        }
+
+        & img {
+            position: absolute;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            max-width: 100%;
+            max-height: 100%;
+            margin: auto;
+        }
+    }
+}
+
+.af-gallery-arrow {
+
+    &__next,
+    &__prev {
+        top: 50%;
+        position: absolute;
+
+        & svg {
+            width: 42px;
+            height: 42px;
+            cursor: pointer;
+            opacity: 0.5;
+
+            &:hover {
+                opacity: 1;
+            }
+
+
+        }
+    }
+
+    &__next {
+        right: - 55px;
+    }
+
+    &__prev {
+        left: - 55px;
     }
 }

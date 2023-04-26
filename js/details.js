@@ -51,6 +51,16 @@ $(document).ready(function () {
         })
     })
 
+    // Слайдер у hall
+    $('.hall__slider').slick({
+        infinite: false,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        dots: true,
+        nextArrow: '<div class="slider__arrow slider__arrow-next"><svg width="47" height="47" viewBox="0 0 47 47" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M23.4997 46.4167C10.8726 46.4167 0.583008 36.1271 0.583008 23.5C0.583008 10.8729 10.8726 0.583357 23.4997 0.583357C36.1268 0.583357 46.4163 10.8729 46.4163 23.5C46.4163 36.1271 36.1268 46.4167 23.4997 46.4167ZM29.8934 22.2854L21.8038 14.1959C21.4601 13.8521 21.0247 13.6917 20.5893 13.6917C20.1538 13.6917 19.7184 13.8521 19.3747 14.1959C18.7101 14.8604 18.7101 15.9604 19.3747 16.625L26.2497 23.5L19.3747 30.375C18.7101 31.0396 18.7101 32.1396 19.3747 32.8042C20.0393 33.4688 21.1393 33.4688 21.8038 32.8042L29.8934 24.7146C30.5809 24.05 30.5809 22.95 29.8934 22.2854Z" fill="white" fill- opacity="0.99" /></svg></div>',
+        prevArrow: '<div class="slider__arrow slider__arrow-prev"><svg width="47" height="47" viewBox="0 0 47 47" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M23.5003 0.583313C36.1274 0.583313 46.417 10.8729 46.417 23.5C46.417 36.1271 36.1274 46.4166 23.5003 46.4166C10.8732 46.4166 0.583657 36.1271 0.583657 23.5C0.583657 10.8729 10.8732 0.583313 23.5003 0.583313ZM17.1066 24.7146L25.1962 32.8041C25.5399 33.1479 25.9753 33.3083 26.4107 33.3083C26.8462 33.3083 27.2816 33.1479 27.6253 32.8041C28.2899 32.1396 28.2899 31.0396 27.6253 30.375L20.7503 23.5L27.6253 16.625C28.2899 15.9604 28.2899 14.8604 27.6253 14.1958C26.9607 13.5312 25.8607 13.5312 25.1962 14.1958L17.1066 22.2854C16.4191 22.95 16.4191 24.05 17.1066 24.7146Z" fill="white"/></svg></div>',
+    });
+
 
     /* ====================================================================================
     новое
@@ -385,6 +395,56 @@ $(document).ready(function () {
             })
         })
 
+    }
+
+    /* ==============================================
+    all photo
+    ==============================================*/
+
+    if (document.querySelector('.details-gallery__all')) {
+
+        const item = document.querySelector('.details-gallery__all');
+        const images = document.querySelectorAll('.details-gallery__slider img')
+
+        const galleryPopup = new afLightbox({
+            mobileInBottom: false
+        })
+
+        item.addEventListener('click', e => {
+
+            let gallery = document.createElement('div')
+            gallery.classList.add('af-gallery')
+
+            images.forEach(img => {
+
+                let itemImages = document.createElement('div')
+                itemImages.classList.add('af-gallery__item')
+                itemImages.innerHTML = '<img src="' + img.src + '" >'
+
+                gallery.append(itemImages)
+
+            })
+
+            galleryPopup.open(gallery.outerHTML, function (instanse) {})
+
+            $(document).find('.af-gallery').slick({
+                infinite: true,
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                dots: false,
+                nextArrow: '<div class="af-gallery-arrow__next" ><svg width="47" height="47" viewBox="0 0 47 47" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M23.4997 46.4167C10.8726 46.4167 0.583008 36.1271 0.583008 23.5C0.583008 10.8729 10.8726 0.583357 23.4997 0.583357C36.1268 0.583357 46.4163 10.8729 46.4163 23.5C46.4163 36.1271 36.1268 46.4167 23.4997 46.4167ZM29.8934 22.2854L21.8038 14.1959C21.4601 13.8521 21.0247 13.6917 20.5893 13.6917C20.1538 13.6917 19.7184 13.8521 19.3747 14.1959C18.7101 14.8604 18.7101 15.9604 19.3747 16.625L26.2497 23.5L19.3747 30.375C18.7101 31.0396 18.7101 32.1396 19.3747 32.8042C20.0393 33.4688 21.1393 33.4688 21.8038 32.8042L29.8934 24.7146C30.5809 24.05 30.5809 22.95 29.8934 22.2854Z" fill="white" fill- opacity="0.99" /></svg></div>',
+                prevArrow: '<div class="af-gallery-arrow__prev" ><svg width="47" height="47" viewBox="0 0 47 47" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M23.5003 0.583313C36.1274 0.583313 46.417 10.8729 46.417 23.5C46.417 36.1271 36.1274 46.4166 23.5003 46.4166C10.8732 46.4166 0.583657 36.1271 0.583657 23.5C0.583657 10.8729 10.8732 0.583313 23.5003 0.583313ZM17.1066 24.7146L25.1962 32.8041C25.5399 33.1479 25.9753 33.3083 26.4107 33.3083C26.8462 33.3083 27.2816 33.1479 27.6253 32.8041C28.2899 32.1396 28.2899 31.0396 27.6253 30.375L20.7503 23.5L27.6253 16.625C28.2899 15.9604 28.2899 14.8604 27.6253 14.1958C26.9607 13.5312 25.8607 13.5312 25.1962 14.1958L17.1066 22.2854C16.4191 22.95 16.4191 24.05 17.1066 24.7146Z" fill="white"/></svg></div>',
+                responsive: [{
+                    breakpoint: 600,
+                    settings: {
+                        centerMode: true,
+                        centerPadding: '20px',
+                        arrows: false
+                    }
+                }, ]
+            });
+
+        })
     }
 
 
