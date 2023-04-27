@@ -423,7 +423,7 @@ $(document).ready(function () {
 
         }
 
-        function changeInputUpload(modal) {
+        function eventsInputUpload(modal) {
 
             const input = modal.querySelector('input[type=file]')
             const dropzone = modal.querySelector('.attach-block')
@@ -432,9 +432,12 @@ $(document).ready(function () {
                 sendFiles(this.files, input.getAttribute('name'), modal)
             })
 
+
+
             dropzone.addEventListener('drop', function (e) {
 
                 e.preventDefault()
+                e.stopPropagation()
 
 
                 if (dropzone.classList.contains('dragover')) {
@@ -451,10 +454,12 @@ $(document).ready(function () {
             })
 
             dropzone.addEventListener('dragover', function (e) {
+                e.preventDefault()
                 dropzone.classList.add('dragover')
             })
 
             dropzone.addEventListener('dragleave', function (e) {
+                e.stopPropagation()
 
                 if (dropzone.classList.contains('dragover')) {
                     dropzone.classList.remove('dragover')
@@ -496,7 +501,7 @@ $(document).ready(function () {
 
                         //file upload
 
-                        changeInputUpload(addReviewPopup.modal);
+                        eventsInputUpload(addReviewPopup.modal);
 
                         //init send form
 
@@ -506,9 +511,12 @@ $(document).ready(function () {
                             e.preventDefault()
 
                             let formData = new FormData(form);
+
+                            console.log(formData)
+
                             // send data review
                             let xhr = new XMLHttpRequest();
-                            xhr.open('POST', '_popup-review.html')
+                            xhr.open('POST', 'handler.php')
                             xhr.send(formData)
                             xhr.onload = function () {
 
