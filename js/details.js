@@ -1,8 +1,6 @@
 $(document).ready(function () {
 
-    /* ====================================================================================
-    !!! стрый код  с боевого (не нужно переносить)
-    ====================================================================================*/
+
 
     // Слайдер с отзывами
     $('.reviews__items').slick({
@@ -77,6 +75,8 @@ $(document).ready(function () {
                 breakpoint: 800,
                 settings: {
                     slidesToShow: 1,
+                    centerMode: true,
+                    centerPadding: '20px',
                 }
             },
         ],
@@ -468,9 +468,6 @@ $(document).ready(function () {
         }
 
 
-
-
-
         const items = document.querySelectorAll('.select-rating label')
 
         initRating(items)
@@ -511,8 +508,6 @@ $(document).ready(function () {
                             e.preventDefault()
 
                             let formData = new FormData(form);
-
-                            console.log(formData)
 
                             // send data review
                             let xhr = new XMLHttpRequest();
