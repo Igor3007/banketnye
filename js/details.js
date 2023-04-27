@@ -61,6 +61,29 @@ $(document).ready(function () {
         prevArrow: '<div class="slider__arrow slider__arrow-prev"><svg width="47" height="47" viewBox="0 0 47 47" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M23.5003 0.583313C36.1274 0.583313 46.417 10.8729 46.417 23.5C46.417 36.1271 36.1274 46.4166 23.5003 46.4166C10.8732 46.4166 0.583657 36.1271 0.583657 23.5C0.583657 10.8729 10.8732 0.583313 23.5003 0.583313ZM17.1066 24.7146L25.1962 32.8041C25.5399 33.1479 25.9753 33.3083 26.4107 33.3083C26.8462 33.3083 27.2816 33.1479 27.6253 32.8041C28.2899 32.1396 28.2899 31.0396 27.6253 30.375L20.7503 23.5L27.6253 16.625C28.2899 15.9604 28.2899 14.8604 27.6253 14.1958C26.9607 13.5312 25.8607 13.5312 25.1962 14.1958L17.1066 22.2854C16.4191 22.95 16.4191 24.05 17.1066 24.7146Z" fill="white"/></svg></div>',
     });
 
+    $('.more-halls__inner').slick({
+        infinite: false,
+        slidesToShow: 3,
+        appendArrows: '.more-halls__nav',
+        nextArrow: '<div class="more-halls__next"><svg width="47" height="47" viewBox="0 0 47 47" xmlns="http://www.w3.org/2000/svg"><path d="M23.4997 46.4167C10.8726 46.4167 0.583008 36.1271 0.583008 23.5C0.583008 10.8729 10.8726 0.583357 23.4997 0.583357C36.1268 0.583357 46.4163 10.8729 46.4163 23.5C46.4163 36.1271 36.1268 46.4167 23.4997 46.4167ZM29.8934 22.2854L21.8038 14.1959C21.4601 13.8521 21.0247 13.6917 20.5893 13.6917C20.1538 13.6917 19.7184 13.8521 19.3747 14.1959C18.7101 14.8604 18.7101 15.9604 19.3747 16.625L26.2497 23.5L19.3747 30.375C18.7101 31.0396 18.7101 32.1396 19.3747 32.8042C20.0393 33.4688 21.1393 33.4688 21.8038 32.8042L29.8934 24.7146C30.5809 24.05 30.5809 22.95 29.8934 22.2854Z"  fill- opacity="0.99" /></svg></div>',
+        prevArrow: '<div class="more-halls__prev"><svg width="47" height="47" viewBox="0 0 47 47" xmlns="http://www.w3.org/2000/svg"><path d="M23.5003 0.583313C36.1274 0.583313 46.417 10.8729 46.417 23.5C46.417 36.1271 36.1274 46.4166 23.5003 46.4166C10.8732 46.4166 0.583657 36.1271 0.583657 23.5C0.583657 10.8729 10.8732 0.583313 23.5003 0.583313ZM17.1066 24.7146L25.1962 32.8041C25.5399 33.1479 25.9753 33.3083 26.4107 33.3083C26.8462 33.3083 27.2816 33.1479 27.6253 32.8041C28.2899 32.1396 28.2899 31.0396 27.6253 30.375L20.7503 23.5L27.6253 16.625C28.2899 15.9604 28.2899 14.8604 27.6253 14.1958C26.9607 13.5312 25.8607 13.5312 25.1962 14.1958L17.1066 22.2854C16.4191 22.95 16.4191 24.05 17.1066 24.7146Z" /></svg></div>',
+        responsive: [{
+                breakpoint: 1200,
+                settings: {
+                    slidesToShow: 2,
+                }
+            },
+            {
+                breakpoint: 800,
+                settings: {
+                    slidesToShow: 1,
+                }
+            },
+        ],
+
+
+    });
+
 
     /* ====================================================================================
     новое
@@ -318,6 +341,131 @@ $(document).ready(function () {
 
     if (document.querySelector('.select-rating')) {
 
+        /* ================================================
+        drop
+        ================================================*/
+
+
+
+        const filesStorage = {};
+
+        function sendFiles(files, field, container) {
+
+            let extentions = [
+                'image/jpeg',
+                'image/png',
+                'application/illustrator',
+                'application/postscript',
+                'application/pdf',
+                'application/x-photoshop',
+                'image/vnd.adobe.photoshop',
+                'image/tiff',
+                'application/cdr',
+            ];
+
+            [...files].forEach(file => {
+
+                console.log(file.type)
+
+                if (extentions.includes(file.type)) {
+
+
+                    if (filesStorage[field] == undefined) {
+                        filesStorage[field] = [];
+                        filesStorage[field].push(file)
+                    } else {
+                        filesStorage[field].push(file)
+                    }
+
+
+                } else {
+                    alert('Допустимы только файлы изображений JPEG, PNG, EPS, AI, CDR, PSD, PDF, TIFF')
+                }
+
+            })
+
+            console.log(filesStorage)
+
+            renderList(filesStorage, container)
+        }
+
+        function renderList(filesStorage, container) {
+
+            for (let key in filesStorage) {
+
+                container.querySelector('.review-create__files').innerHTML = ''
+
+                filesStorage[key].forEach(function (file, index) {
+
+
+                    if (file.type == 'image/jpeg' || file.type == 'image/png') {
+                        var reader = new FileReader();
+                        reader.readAsDataURL(file);
+                        reader.onload = function (e) {
+
+                            let elem = document.createElement('span')
+                            elem.style.backgroundImage = 'url(' + e.target.result + ')'
+                            container.querySelector('.review-create__files').append(elem)
+
+                            elem.addEventListener('click', e => {
+                                if (confirm('Вы дейсвительно хотите удалить?')) {
+                                    elem.remove();
+                                    filesStorage[key].splice(index, index)
+                                }
+                            })
+
+                        }
+                    }
+
+                })
+
+            }
+
+        }
+
+        function changeInputUpload(modal) {
+
+            const input = modal.querySelector('input[type=file]')
+            const dropzone = modal.querySelector('.attach-block')
+
+            input.addEventListener('change', function () {
+                sendFiles(this.files, input.getAttribute('name'), modal)
+            })
+
+            dropzone.addEventListener('drop', function (e) {
+
+                e.preventDefault()
+
+
+                if (dropzone.classList.contains('dragover')) {
+                    dropzone.classList.remove('dragover')
+                }
+
+                const files = [];
+
+                [...e.dataTransfer.items].forEach(item => {
+                    files.push(item.getAsFile())
+                })
+
+                sendFiles(files, input.getAttribute('name'), modal)
+            })
+
+            dropzone.addEventListener('dragover', function (e) {
+                dropzone.classList.add('dragover')
+            })
+
+            dropzone.addEventListener('dragleave', function (e) {
+
+                if (dropzone.classList.contains('dragover')) {
+                    dropzone.classList.remove('dragover')
+                }
+            })
+        }
+
+
+
+
+
         const items = document.querySelectorAll('.select-rating label')
 
         initRating(items)
@@ -346,10 +494,11 @@ $(document).ready(function () {
                             'bubbles': true
                         }));
 
+                        //file upload
 
+                        changeInputUpload(addReviewPopup.modal);
 
                         //init send form
-
 
                         let form = addReviewPopup.modal.querySelector('[data-review="form"]')
 
