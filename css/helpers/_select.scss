@@ -8,14 +8,14 @@ $select-height: auto;
 
 .af-select-open {
 
-    @media screen and (max-width: $w480) {
-        overflow: hidden;
+    // @media screen and (max-width: $w480) {
+    //     overflow: hidden;
 
-        & * {
-            animation: none !important;
-        }
+    //     & * {
+    //         animation: none !important;
+    //     }
 
-    }
+    // }
 
     & .section-first-block {
         z-index: 15;

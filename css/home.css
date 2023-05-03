@@ -14,18 +14,18 @@
   box-shadow: none;
 }
 .form input[type=text], .form input[type=date], .form input[type=number], .form input[type=password], .form input[type=email], .form input[type=tel] {
-  height: 48px;
   font-size: 14px;
   padding-left: 15px;
   padding-right: 15px;
-  border: 1px solid #D9D9D9;
   box-sizing: border-box;
-  border-radius: 0px;
-  width: auto;
   flex-grow: 1;
   background-color: #fff;
   display: block;
   transition: border, background 0.4s ease;
+  width: 100% !important;
+  border: 1px solid #999999;
+  border-radius: 8px !important;
+  height: 52px;
 }
 .form input[type=text]::-moz-placeholder, .form input[type=date]::-moz-placeholder, .form input[type=number]::-moz-placeholder, .form input[type=password]::-moz-placeholder, .form input[type=email]::-moz-placeholder, .form input[type=tel]::-moz-placeholder {
   color: #000;
@@ -176,26 +176,31 @@
   margin-bottom: 30px;
 }
 .form .af-select {
-  height: 48px;
-  border: 1px solid #d9d9d9;
+  height: 52px;
+  border: none;
   box-sizing: border-box;
   background-color: transparent;
 }
 .form .af-select .select-styled::before {
   content: "";
   position: absolute;
-  background-color: #e5e5e5;
   right: 0;
   top: 0;
   bottom: 0;
   display: block;
   width: 45px;
-  border-left: 1px solid #d9d9d9;
+}
+.form .af-select .select-styled {
+  border: 1px solid #999;
+  border-radius: 8px;
+}
+.form .af-select .select-styled.active {
+  border-color: #084cfe;
 }
 .form .af-select .select-styled::after {
   content: "";
-  width: 12px;
-  min-width: 12px;
+  width: 10px;
+  min-width: 10px;
 }
 .form .af-select .select-options li {
   max-width: none;
@@ -266,15 +271,112 @@
   transform: rotate(-45deg);
 }
 
-/* =af-select */
-@media screen and (max-width: 480px) {
-  .af-select-open {
-    overflow: hidden;
-  }
-  .af-select-open * {
-    animation: none !important;
+.radio {
+  display: inline-flex;
+  position: relative;
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 140%;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  align-items: flex-start;
+}
+.radio__title, .radio__desc {
+  display: block;
+}
+.radio__title {
+  color: #000;
+  font-size: 14px;
+}
+.radio__desc {
+  font-size: 12px;
+  color: #959595;
+}
+.radio input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+  display: none;
+}
+.radio__text {
+  line-height: 140%;
+  font-size: 14px;
+  padding-top: 1px;
+  font-weight: 400;
+}
+@media screen and (min-width: 992px) {
+  .radio__text {
+    font-size: 15px;
   }
 }
+.radio__elem {
+  top: 4px;
+  position: relative;
+  height: 20px;
+  width: 20px;
+  min-width: 20px;
+  background-color: transparent;
+  display: inline-block;
+  margin-right: 10px;
+  border-radius: 50%;
+  transition: 0.15s linear;
+  border: 1px solid #ccc;
+}
+.radio input:hover ~ .radio__elem {
+  border: 1px solid #084cfe;
+}
+.radio input:checked ~ .radio__elem {
+  border: 7px solid #084cfe;
+}
+.radio input:checked ~ .radio__text {
+  color: #525166;
+}
+
+.form-note {
+  font-size: 14px;
+  padding-bottom: 30px;
+}
+
+.btn.btn-loading::after {
+  content: "";
+  width: 1em;
+  min-width: 1em;
+  height: 1em;
+  border: 2px solid #fff;
+  border-left-color: rgb(255, 255, 255);
+  border-radius: 50%;
+  border-left-color: transparent !important;
+  margin-left: 10px;
+  transition: transform 0.5s linear;
+  animation: 0.5s linear loadingrotate infinite;
+  display: inline-block;
+  white-space: nowrap;
+  flex-wrap: nowrap;
+  position: relative;
+  left: 5px;
+  top: 0.2em;
+}
+.btn.btn-success::after {
+  content: "";
+  width: 15px;
+  min-width: 14px;
+  height: 9px;
+  border: 2px solid #fff;
+  animation: none;
+  min-width: 12px;
+  display: inline-block;
+  border-top: none;
+  border-right: none;
+  transform: rotate(-45deg) translateX(4px);
+  margin-left: 10px;
+  position: relative;
+  left: 5px;
+}
+
+/* =af-select */
 .af-select-open .section-first-block {
   z-index: 15;
 }

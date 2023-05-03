@@ -35,6 +35,11 @@ $(document).ready(function () {
         })
     });
 
+    //развернуть отзыв
+    $('.reviews__item-btn').click(function () {
+        $(this).parent().toggleClass('show');
+    });
+
     document.querySelector('header .burger').addEventListener('click', function () {
         document.querySelector('.mobile-menu').classList.add('is-active');
         document.querySelector('body').classList.add('mobile');
@@ -185,6 +190,245 @@ $(document).ready(function () {
         }
     }
 
+    class afSelect {
+
+        constructor(option) {
+            this.selector = option.selector;
+            this.selectAll = document.querySelectorAll(this.selector)
+            this.renderTemplate()
+            this.clickEventOut()
+        }
+
+        reinit(elem) {
+            const _this = this;
+
+            let item = elem.parentNode
+
+            if (item.querySelector('.select-styled')) {
+                item.querySelector('.select-styled').remove()
+                item.querySelector('.select-list').remove()
+            }
+
+            _this.renderOption(item)
+
+        }
+
+        renderOption(item) {
+
+            var _this = this;
+            var select = item.querySelector('select')
+            var placeholder = select.getAttribute('placeholder')
+
+            const styledSelect = document.createElement('div')
+            styledSelect.classList.add('select-styled');
+            styledSelect.innerHTML = '<span>' + placeholder + '</span>';
+
+            const styledOptions = document.createElement('ul')
+            styledOptions.classList.add('select-options');
+
+            const styledList = document.createElement('div')
+            styledList.classList.add('select-list');
+            styledList.appendChild(styledOptions)
+
+            item.appendChild(styledSelect)
+            item.appendChild(styledList)
+
+            //====
+
+            item.querySelectorAll('select > option').forEach(function (item, index) {
+
+                // create li elem
+                const li = document.createElement('li')
+                li.innerHTML = item.innerText
+                li.setAttribute('rel', item.value)
+
+                //если не задан placeholder, сделать им первый элемент
+                if (index == 0 && !placeholder) {
+                    styledSelect.innerHTML = '<span>' + item.innerText + '</span>';
+                }
+
+                //если есть selected элемент
+                if (item.getAttribute('selected')) {
+                    if (!placeholder) {
+                        styledSelect.innerHTML = '<span>' + item.innerText + '</span>';
+                        li.classList.add('active')
+                    } else {
+                        styledSelect.innerHTML = '<span class="af-selected-placeholder" data-af-placeholder="' + placeholder + '">' + item.innerText + '</span>';
+                        li.classList.add('active')
+                    }
+                }
+
+                styledOptions.appendChild(li)
+                _this.clickEventListItem(li)
+
+            })
+
+            //add public methods
+
+            select['afSelect'] = new Object;
+            select.afSelect.open = function () {
+                _this.openSelect(item)
+            }
+            select.afSelect.close = function () {
+                _this.closeSelect()
+            }
+            select.afSelect.update = function () {
+                _this.reinit(select)
+            }
+
+
+        }
+
+        renderTemplate() {
+
+            const _this = this;
+            const istanse = []
+
+            this.selectAll.forEach(function (item, index) {
+
+
+
+                if (!item.classList.contains('select-hidden')) {
+                    item.classList.add('select-hidden');
+                    const wrapper = document.createElement('div');
+                    wrapper.classList.add('af-select');
+                    wrapper.innerHTML = item.outerHTML;
+                    item.parentNode.replaceChild(wrapper, item);
+
+                    //add event 
+                    _this.clickEventOpenSelect(wrapper)
+                    istanse.push(wrapper)
+                }
+
+            })
+
+            istanse.forEach(function (item, index) {
+                _this.renderOption(item)
+            })
+
+
+        }
+
+        openSelect(elem) {
+            elem.style.maxWidth = (elem.offsetWidth) + 'px'
+            elem.querySelector('.select-styled').classList.toggle('active')
+            elem.querySelector('.select-options').classList.toggle('active')
+            elem.querySelector('.select-list').classList.toggle('active')
+            document.querySelector('body').classList.toggle('af-select-open')
+        }
+
+        closeSelect() {
+
+            if (!document.querySelector('.select-styled.active')) return false
+
+            document.querySelector('.select-styled.active').classList.remove('active')
+            document.querySelector('.select-options.active').classList.remove('active')
+            document.querySelector('.select-list.active').classList.remove('active')
+            document.querySelector('body').classList.remove('af-select-open')
+        }
+
+        clickEventOut() {
+            const _this = this;
+            document.addEventListener('click', function () {
+                _this.closeSelect()
+            })
+        }
+
+        clickEventListItem(elem) {
+
+            const parentElem = elem.parentNode.parentNode.parentNode
+            const _this = this;
+            const placeholder = parentElem.querySelector('select').getAttribute('placeholder')
+            const styledSelect = parentElem.querySelector('.select-styled')
+
+            elem.addEventListener('click', function (event) {
+
+                event.stopPropagation()
+                event.preventDefault()
+
+                if (parentElem.querySelector('.select-options li.active'))
+                    parentElem.querySelector('.select-options li.active').classList.remove('active')
+
+                this.classList.add('active')
+
+                if (placeholder) {
+                    styledSelect.innerHTML = '<span class="af-selected-placeholder" data-af-placeholder="' + placeholder + '">' + this.innerHTML + '</span>';
+                } else {
+                    parentElem.querySelector('.select-styled span').innerHTML = this.innerHTML
+                }
+
+                parentElem.querySelector('select').value = this.getAttribute('rel')
+
+                var event = new Event('change');
+                parentElem.querySelector('select').dispatchEvent(event);
+
+
+
+                _this.closeSelect()
+            })
+        }
+
+        clickEventOpenSelect(elem) {
+            const _this = this;
+
+            function addEventOpen(event) {
+                event.stopPropagation()
+                event.preventDefault()
+                _this.openSelect(this)
+            }
+
+            elem.removeEventListener('click', addEventOpen)
+            elem.addEventListener('click', addEventOpen)
+        }
+
+    }
+
+    /* ==============================================
+    select
+    ==============================================*/
+
+    const customSelect = new afSelect({
+        selector: 'select'
+    });
+
+    /* ===================================
+    datepicker
+    ===================================*/
+
+    if (document.querySelector('[data-input="date"]')) {
+
+        const elem = document.querySelector('[data-input="date"]');
+
+        (function () {
+            Datepicker.locales.ru = {
+                days: ["Воскресенье", "Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота"],
+                daysShort: ["Вск", "Пнд", "Втр", "Срд", "Чтв", "Птн", "Суб"],
+                daysMin: ["Вс", "Пн", "Вт", "Ср", "Чт", "Пт", "Сб"],
+                months: ["Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"],
+                monthsShort: ["Янв", "Фев", "Мар", "Апр", "Май", "Июн", "Июл", "Авг", "Сен", "Окт", "Ноя", "Дек"],
+                today: "Сегодня",
+                clear: "Очистить",
+                format: "dd.mm.yyyy",
+                weekStart: 1,
+                monthsTitle: 'Месяцы'
+            }
+        })();
+
+        function initDatepicker(elem) {
+            const dateCurrent = new Date();
+            const dateStr = dateCurrent.getDate() + '.' + (dateCurrent.getMonth() + 1) + '.' + dateCurrent.getFullYear();
+            const datepicker = new Datepicker(elem, {
+                autohide: true,
+                language: 'ru',
+                format: 'dd.mm.yyyy',
+                minDate: dateStr
+            });
+        }
+
+        initDatepicker(elem);
+
+
+    }
 
     /* ==============================================
     details slick slider
@@ -231,6 +475,8 @@ $(document).ready(function () {
             let modal = instanse.modal
             let form = modal.querySelector('[data-login="form"]')
 
+            initMask(instanse.modal)
+
             form.addEventListener('submit', e => {
 
                 e.preventDefault()
@@ -255,11 +501,24 @@ $(document).ready(function () {
                         form.querySelector('.err').innerHTML = '<span>' + response.msg + '</span>'
                     } else {
 
-                        alert('login success!')
 
-                        //window.reload()
+                        const fields = instanse.modal.querySelectorAll('[data-field]')
 
-                        instanse.close()
+                        fields.forEach(field => {
+
+                            switch (field.dataset.field) {
+                                case 'step1':
+                                    field.style.display = 'none';
+                                    break;
+                                case 'step2':
+                                    field.style.display = 'block';
+                                    break;
+                            }
+
+                        })
+
+
+                        //instanse.close()
 
                         if (document.querySelector('.review-create__send .btn')) {
                             document.querySelector('.review-create__send .btn').removeAttribute('disabled')
@@ -354,13 +613,6 @@ $(document).ready(function () {
             let extentions = [
                 'image/jpeg',
                 'image/png',
-                'application/illustrator',
-                'application/postscript',
-                'application/pdf',
-                'application/x-photoshop',
-                'image/vnd.adobe.photoshop',
-                'image/tiff',
-                'application/cdr',
             ];
 
             [...files].forEach(file => {
@@ -379,7 +631,7 @@ $(document).ready(function () {
 
 
                 } else {
-                    alert('Допустимы только файлы изображений JPEG, PNG, EPS, AI, CDR, PSD, PDF, TIFF')
+                    alert('Допустимы только файлы изображений JPEG, PNG')
                 }
 
             })
@@ -598,6 +850,300 @@ $(document).ready(function () {
 
         })
     }
+
+
+    /* ==============================================
+    init mask
+    ==============================================*/
+
+    function initMask(container) {
+        container.querySelectorAll('input[type="tel"]').forEach(function (el) {
+            VMasker(el).maskPattern("+9(999) 999-99-99");
+        });
+
+        container.querySelectorAll('[data-input="number"]').forEach(function (el) {
+            VMasker(el).maskNumber();
+        });
+    }
+
+    initMask(document);
+
+    /* ==============================================
+    popup online
+    ==============================================*/
+
+
+
+    class FormOnline {
+        constructor() {
+            this.buttonsPopupStart = document.querySelectorAll('[data-popup="online"]')
+            this.asideForm = document.querySelectorAll('[data-online="form"]')
+            this.lightboxs = {}
+            this.addEvents()
+        }
+
+        initDatepicker(container) {
+            (function () {
+                Datepicker.locales.ru = {
+                    days: ["Воскресенье", "Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота"],
+                    daysShort: ["Вск", "Пнд", "Втр", "Срд", "Чтв", "Птн", "Суб"],
+                    daysMin: ["Вс", "Пн", "Вт", "Ср", "Чт", "Пт", "Сб"],
+                    months: ["Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"],
+                    monthsShort: ["Янв", "Фев", "Мар", "Апр", "Май", "Июн", "Июл", "Авг", "Сен", "Окт", "Ноя", "Дек"],
+                    today: "Сегодня",
+                    clear: "Очистить",
+                    format: "dd.mm.yyyy",
+                    weekStart: 1,
+                    monthsTitle: 'Месяцы'
+                }
+            })();
+
+            function initDateInstanse(elem) {
+                const dateCurrent = new Date();
+                const dateStr = dateCurrent.getDate() + '.' + (dateCurrent.getMonth() + 1) + '.' + dateCurrent.getFullYear();
+                const datepicker = new Datepicker(elem, {
+                    autohide: true,
+                    language: 'ru',
+                    format: 'dd.mm.yyyy',
+                    minDate: dateStr
+                });
+            }
+
+            container.querySelectorAll('[data-input="date"]').forEach(input => {
+                initDateInstanse(input)
+            })
+        }
+
+        initPopupStart() {
+            this.lightboxs['onlinePopup'] = new afLightbox({
+                mobileInBottom: true
+            })
+
+            this.lightboxs['onlinePopup'].open('<div class="af-spiner" ></div>', (instanse) => {
+                let xhr = new XMLHttpRequest();
+                xhr.open('GET', '_popup-online.html')
+                xhr.send()
+                xhr.onload = () => {
+                    this.lightboxs['onlinePopup'].changeContent(xhr.response)
+                    setTimeout(() => {
+                        this.initOnlinePopup(this.lightboxs['onlinePopup'])
+                    }, 100)
+                };
+            })
+        }
+
+        initSlickPopup(modal) {
+
+            function changeActiveThumb(index, modal) {
+                const items = modal.querySelectorAll('.preview-images__thumb li')
+                items.forEach((el, i) => {
+                    if (i == index) {
+                        el.classList.add('is-active')
+                    } else {
+                        el.classList.contains('is-active') ? el.classList.remove('is-active') : ''
+                    }
+                })
+
+            }
+
+            const SLICK = $(modal).find('.vertical-slider');
+
+            SLICK.slick({
+                vertical: true,
+                verticalSwiping: true,
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                arrows: false,
+                autoplay: true,
+                autoplaySpeed: 2000,
+            });
+
+            changeActiveThumb(0, modal);
+
+            SLICK.on('afterChange', function (slick, currentSlideObj) {
+                changeActiveThumb(currentSlideObj.currentSlide, modal);
+                modal.querySelector('.online-popup__label').innerHTML = currentSlideObj.$slides[currentSlideObj.currentSlide].dataset.title
+            })
+
+            //click thumb
+
+            const items = modal.querySelectorAll('.preview-images__thumb li')
+
+            items.forEach((el, i) => {
+                el.addEventListener('click', () => {
+                    SLICK.slick('slickGoTo', i);
+                    changeActiveThumb(i, modal)
+                })
+            })
+        }
+
+        initMask(container) {
+            container.querySelectorAll('input[type="tel"]').forEach(function (el) {
+                VMasker(el).maskPattern("+9(999) 999-99-99");
+            });
+
+            container.querySelectorAll('[data-input="number"]').forEach(function (el) {
+                VMasker(el).maskNumber();
+            });
+        }
+
+        initOnlinePopup(instanse) {
+
+            const modal = instanse.modal
+
+            // init slider
+            this.initSlickPopup(modal);
+
+            // init mask
+            this.initMask(modal)
+
+            //init select
+            const customSelect = new afSelect({
+                selector: '.online-popup select'
+            });
+
+            //init datepicker
+            initDatepicker(modal.querySelector('[data-input="date"]'));
+
+            //init submit 
+            const form = modal.querySelector('form');
+            const submitButton = form.querySelector('[type=submit]');
+
+            // send form
+            form.addEventListener('submit', e => {
+                e.preventDefault()
+                this.sendFormOnlineStart(form, submitButton)
+            })
+
+
+        }
+
+        validateFields(formData) {
+            const err = [];
+
+            formData.forEach(item => item.length || err.push(item))
+
+            if (err.length) {
+                alert('Все поля обязательны для заполнения')
+                return false
+            }
+
+            return true
+        }
+
+        sendFormOnlineStart(form, submitButton) {
+
+            const formData = new FormData(form);
+
+
+            if (!this.validateFields(formData)) {
+                return false
+            }
+
+            submitButton.classList.add('btn-loading')
+
+            let xhr = new XMLHttpRequest();
+            xhr.open('POST', 'handler.php')
+            xhr.send(formData)
+            xhr.onload = () => {
+                setTimeout(() => {
+
+                    if (this.lightboxs['onlinePopup']) {
+                        this.lightboxs['onlinePopup'].close();
+                    }
+
+                    submitButton.classList.contains('btn-loading') ? submitButton.classList.remove('btn-loading') : ''
+
+                    this.initOnlinePopup2();
+                }, 1000)
+            };
+
+
+        }
+
+        initOnlinePopup2() {
+
+            const onlinePopup2 = new afLightbox({
+                mobileInBottom: true
+            })
+
+            onlinePopup2.open('<div class="af-spiner" ></div>', (instanse) => {
+                let xhr = new XMLHttpRequest();
+                xhr.open('GET', '_popup-online-2.html')
+                xhr.send()
+                xhr.onload = () => {
+                    onlinePopup2.changeContent(xhr.response)
+
+                    setTimeout(() => {
+                        this.initSlickPopup(onlinePopup2.modal)
+                        this.initMask(onlinePopup2.modal)
+                    }, 100)
+
+                    //add submit event
+                    const form = onlinePopup2.modal.querySelector('[data-online="getCode"]')
+                    const submitButton = form.querySelector('[type=submit]');
+
+                    form.addEventListener('submit', e => {
+                        e.preventDefault()
+
+                        const formData = new FormData(form)
+
+                        // if (!this.validateFields(formData)) {
+                        //     return false
+                        // }
+
+                        let xhr = new XMLHttpRequest();
+                        xhr.open('POST', 'handler.php')
+                        xhr.send(formData)
+                        xhr.onload = () => {
+
+                            setTimeout(() => {
+                                let response = JSON.parse(xhr.response);
+                                submitButton.classList.contains('btn-loading') ? submitButton.classList.remove('btn-loading') : ''
+
+                                if (response.status) {
+                                    const fields = onlinePopup2.modal.querySelectorAll('[data-field]')
+
+                                    fields.forEach(field => {
+
+                                        switch (field.dataset.field) {
+                                            case 'step1':
+                                                field.style.display = 'none';
+                                                break;
+                                            case 'step2':
+                                                field.style.display = 'block';
+                                                break;
+                                        }
+
+                                    })
+                                }
+                            }, 500)
+                        }
+                    })
+
+                };
+            })
+
+        }
+
+        initFormAside(form, e) {
+
+            e.preventDefault()
+
+            const submitButton = form.querySelector('[type=submit]');
+            this.sendFormOnlineStart(form, submitButton)
+        }
+
+
+        addEvents() {
+            this.buttonsPopupStart.forEach(button => button.addEventListener('click', e => this.initPopupStart()))
+            this.asideForm.forEach(form => form.addEventListener('submit', e => this.initFormAside(form, e)))
+        }
+
+    }
+
+
+    const fOnline = new FormOnline();
 
 
 

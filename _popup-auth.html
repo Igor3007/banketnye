@@ -1,9 +1,9 @@
  <div class="auth-popup">
      <form action="/" data-login="form">
-         <div class="auth-popup__title">Авторизация</div>
+         <div class="auth-popup__title">Вы точно не робот?</div>
          <div class="auth-popup__form">
              <div class="form">
-                 <div class="form__item">
+                 <div class="form__item" data-field="step1">
                      <div class="form__subitem">
                          <div class="input-label">
                              <label>Имя</label>
@@ -11,14 +11,29 @@
                          </div>
                      </div>
                  </div>
-                 <div class="form__item">
+
+                 <div class="form__item" data-field="step1">
                      <div class="form__subitem">
                          <div class="input-label">
-                             <label>Телефон для подтверждения</label>
-                             <input type="text" name="phone" placeholder="+7">
+                             <label>Код подтверждения</label>
+                             <input type="tel" name="phone" placeholder="+7">
                          </div>
                      </div>
                  </div>
+
+                 <div class="form__item" data-field="step2">
+                     <div class="form__subitem">
+                         <div class="form-note">
+                             Мы отправилил Вам проверочный код на номер телефона который вы указали!
+                             Введите проверочный код ниже
+                         </div>
+                         <div class="input-label">
+                             <label>Проверочный код</label>
+                             <input type="text" name="code" data-input="number" placeholder="_ _ _ _">
+                         </div>
+                     </div>
+                 </div>
+
                  <div class="form__item">
                      <div class="form__subitem">
                          <button class="btn btn-large">Войти</button>

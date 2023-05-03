@@ -11,12 +11,13 @@
     <link rel="stylesheet" href="/css/css.css">
     <link rel="stylesheet" href="/css/details.css">
 
-    <!-- со старого сайта -->
+
     <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js" integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://banketnye-zaly.moscow/js/vanilla-masker.min.js"></script>
 
 
-    <!-- новые -->
+    <script src="/js/datepicker-full.min.js"></script>
     <script src="/js/details.js"></script>
 
 </head>
@@ -166,7 +167,7 @@
         <section class="section-details-gallery">
             <div class="container">
 
-                <div class="page-details">
+                <div class="page-details page-details--gallery">
                     <div class="page-details__content">
                         <div class="details-gallery">
                             <div class="details-gallery__image">
@@ -201,6 +202,88 @@
                                 <h1>Ресторан «Золотой фазан»</h1>
                             </div>
                             <div class="details-main__subtitle"> Парк-отель Орловский</div>
+                        </div>
+
+                    </div>
+
+                    <div class="page-details__form">
+                        <div class="get-calculate">
+                            <div class="get-calculate__head">
+                                <div class="get-calculate__h2">Еда и напитки от</div>
+                                <div class="get-calculate__cost">
+                                    <span>99 000 ₽</span> на <span>40 чел.</span>
+                                </div>
+                                <div class="get-calculate__person">
+                                    (2 500 руб/чел)
+                                </div>
+                            </div>
+                            <div class="get-calculate__main">
+                                <div class="get-calculate__h3">Получить онлайн доступ ✨</div>
+
+                                <div class="get-calculate__feature">
+                                    <ul>
+                                        <li>Реальный расчет стоимости</li>
+                                        <li>Свободные даты</li>
+                                        <li>Банкетное меню и дополнительные услуги</li>
+                                    </ul>
+                                </div>
+
+                                <div class="get-calculate__form">
+                                    <form action="" data-online="form">
+                                        <div class="form">
+
+                                            <div class="form__item">
+                                                <div class="form__subitem">
+                                                    <div class="input-label">
+                                                        <label>Дата мероприятия</label>
+                                                        <input type="text" name="date" data-input="date" placeholder="28.04.2022">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form__item">
+                                                <div class="form__subitem">
+                                                    <div class="input-label">
+                                                        <label>Количество гостей</label>
+                                                        <input type="text" data-input="number" name="user" placeholder="Например, 25">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form__item">
+                                                <div class="form__subitem">
+                                                    <div class="input-label">
+                                                        <label>Тип мероприятия</label>
+                                                        <select name="type">
+                                                            <option value="1">Свадьба</option>
+                                                            <option value="2">Новый год</option>
+                                                            <option value="3">День рождения</option>
+                                                            <option value="4">Юбилей</option>
+                                                            <option value="5">Другие праздники</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form__item">
+                                                <div class="form__subitem">
+                                                    <button class="btn" type="submit">Получить доступ</button>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="page-details page-details--bottom">
+                    <div class="page-details__content">
+
+                        <div class="details-main">
                             <div class="details-main__prop">
                                 <div class="details-main__address">
                                     <div class="prop-item">
@@ -668,62 +751,10 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="page-details__form">
 
 
-                        <div class="sidebar-form sidebar-form--relactive FormBanket" id="form-small">
-                            <form method="POST" action="http://banketnye-zaly.fvds.ru/send" class="FormBanket">
-                                <input type="hidden" name="_token" value="TGoyqnwVu8ESvNvmPXKY6BT9zHo5Pjp9YLvZ033S">
-                                <div>
-                                    <h2 class="sidebar-form__title">Получить точный расчет </h2>
-
-                                    <div class="sidebar-form__desc" data-block="registered" style="display: block;">
-                                        Авторизуйтесь, чтобы
-                                        получить доступ к подробному расчету и свободным датам</div>
-
-                                    <div data-block="phone" style="display: block;">
-                                        <div class="sidebar-form__input input">
-                                            <label>Имя</label>
-                                            <input id="name" type="text" placeholder="Ваше имя" maxlength="30" name="name">
-                                        </div>
-
-                                        <div class="payment__input input payment__input-phone send-code--show">
-                                            <label>Телефон для получения расчета</label>
-                                            <input class="tel" id="phone" placeholder="+ 7" name="phone">
-                                        </div>
-                                    </div>
-
-                                    <div data-block="confirm" style="display: none;">
-                                        <div class="confirm-text">На ваш телефон поступит звонок.
-                                            Введите последние 4 цифры номера телефона<br>
-                                            <div class="confirm-text" data-block="confirm-text"></div>
-                                        </div>
-
-                                        <div class="input">
-                                            <label>Код</label>
-                                            <input type="text" value="" maxlength="4" name="confirm">
-                                        </div>
-                                    </div>
-
-
-                                    <div class="sidebar-form__input input">
-                                        <label>Дата</label>
-                                        <input id="date" type="date" value="2023-05-13" name="date" min="2023-05-13" max="2050-01-01">
-                                        <input type="text" value="Летняя галерея" name="room_name" hidden="">
-                                        <input type="text" value="27" name="cafe_id" hidden="">
-                                        <input type="text" value="Парк-отель Орловский" name="cafe_name" hidden="">
-                                        <input type="hidden" id="room_id" value="87" name="room_id">
-                                    </div>
-                                    <div class="sidebar-form__input input">
-                                        <label>Количество гостей</label>
-                                        <input id="capacity" type="number" value="40" min="2" max="1000" name="capacity">
-                                    </div>
-                                    <button type="submit" formmethod="post" class="btn">
-                                        Отправить
-                                    </button>
-                                </div>
-                            </form>
-                        </div>
 
 
                     </div>
@@ -827,8 +858,8 @@
                                         </div>
                                     </div>
                                     <div class="hall__btns">
-                                        <button class="hall__btn hall__btn1 btn btn2" onclick="modalOpen(10)">Узнать свободную дату</button>
-                                        <button class="hall__btn hall__btn2 btn" onclick="modalOpenSmall(10)">Расчет стоимости</button>
+                                        <button class="hall__btn hall__btn1 btn btn2" data-popup="online">Узнать свободную дату</button>
+                                        <button class="hall__btn hall__btn2 btn" data-popup="online">Расчет стоимости</button>
                                     </div>
                                 </div>
                             </div>
@@ -859,7 +890,7 @@
         <div class="fixed-form__info">
             <h6 class="fixed-form__title">Получить расчёт</h6>
         </div>
-        <button class="fixed-form__btn btn" onclick="modalOpenSmall(87)">Отправить</button>
+        <button class="fixed-form__btn btn" data-popup="online">Отправить</button>
     </div>
 
 
