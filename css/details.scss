@@ -1731,6 +1731,11 @@ body .header {
     border-radius: 20px;
     width: 100vw;
     max-width: 100%;
+    border-radius: 20px 20px 0 0;
+
+    @media screen and (min-width: $w480) {
+        border-radius: 20px;
+    }
 
     @media screen and (min-width: $w992) {
         max-width: 956px;
