@@ -1,7 +1,5 @@
 $(document).ready(function () {
 
-
-
     // Слайдер с отзывами
     $('.reviews__items').slick({
         infinite: true,
@@ -1144,6 +1142,88 @@ $(document).ready(function () {
 
 
     const fOnline = new FormOnline();
+
+
+    /* =======================================
+    stycky form
+    =======================================*/
+
+    if (document.querySelector('.get-calculate')) {
+
+        var current = false;
+
+        window.addEventListener('scroll', e => {
+
+            if (document.body.clientWidth < 992) {
+                return false
+            }
+
+            const form = document.querySelector('.get-calculate')
+            const DOMRect = form.getBoundingClientRect()
+            const pageTop = window.scrollY || window.pageYOffset
+            const maxHeight = document.querySelector('.section-details-gallery').offsetHeight
+
+            if (DOMRect.top <= 30 && !current) {
+                form.classList.add('el-sticky')
+                current = pageTop;
+            } else {
+
+                console.log(current, 'curent')
+                console.log(pageTop, 'ptop')
+
+                if (current < pageTop && current) {
+                    form.classList.add('el-sticky')
+                    //form.style.top = pageTop + 'px'
+                    form.style.opacity = (((maxHeight - form.clientHeight - 150) > (pageTop - current) ? 1 : 0))
+
+                } else {
+                    if (current > pageTop) {
+                        form.classList.contains('el-sticky') ? form.classList.remove('el-sticky') : ''
+                    }
+                }
+            }
+
+
+
+        })
+
+    }
+
+
+    if (document.querySelector('.fixed-form')) {
+
+        window.addEventListener('scroll', e => {
+
+            const pageTop = window.scrollY || window.pageYOffset
+            const block = document.querySelector('.fixed-form');
+            const height = document.querySelector('.page-details--gallery')
+
+            if (pageTop > height.clientHeight) {
+                block.classList.contains('is-hide') ? block.classList.remove('is-hide') : ''
+            } else {
+                block.classList.add('is-hide')
+            }
+
+
+        })
+    }
+
+    // to form online
+
+    if (document.querySelector('[data-to="form-online"]')) {
+        document.querySelector('[data-to="form-online"]').addEventListener('click', e => {
+
+            const form = document.querySelector('.get-calculate')
+
+            console.log(form)
+
+            window.scrollTo({
+                top: form.offsetTop - 10,
+                behavior: 'smooth'
+            })
+        })
+    }
+
 
 
 
