@@ -869,7 +869,7 @@ $(document).ready(function () {
 
     function initMask(container) {
         container.querySelectorAll('input[type="tel"]').forEach(function (el) {
-            VMasker(el).maskPattern("7(999) 999-99-99");
+            VMasker(el).maskPattern("+7(999) 999-99-99");
         });
 
         container.querySelectorAll('[data-input="number"]').forEach(function (el) {
