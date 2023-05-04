@@ -92,12 +92,17 @@
 
      &__note {
 
-         font-size: 13px;
+         font-size: 14px;
          width: 100%;
          padding-top: 15px;
+         text-align: center;
+         color: #999;
+
+
 
          @media screen and (min-width: $w480) {
              padding-top: 30px;
+             font-size: 16px;
          }
 
          & span {
