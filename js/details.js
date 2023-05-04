@@ -308,11 +308,24 @@ $(document).ready(function () {
         }
 
         openSelect(elem) {
+
+            const option = elem.querySelector('.select-options')
+
             elem.style.maxWidth = (elem.offsetWidth) + 'px'
             elem.querySelector('.select-styled').classList.toggle('active')
-            elem.querySelector('.select-options').classList.toggle('active')
+            option.classList.toggle('active')
             elem.querySelector('.select-list').classList.toggle('active')
             document.querySelector('body').classList.toggle('af-select-open')
+
+            console.log(option.getBoundingClientRect())
+            console.log(document.documentElement.clientHeight)
+
+            if (document.documentElement.clientHeight < option.getBoundingClientRect().bottom) {
+                option.classList.add('select-options--top')
+            } else {
+                option.classList.contains('select-options--top') ? option.classList.remove('select-options--top') : ''
+            }
+
         }
 
         closeSelect() {
@@ -856,7 +869,7 @@ $(document).ready(function () {
 
     function initMask(container) {
         container.querySelectorAll('input[type="tel"]').forEach(function (el) {
-            VMasker(el).maskPattern("+9(999) 999-99-99");
+            VMasker(el).maskPattern("7(999) 999-99-99");
         });
 
         container.querySelectorAll('[data-input="number"]').forEach(function (el) {
@@ -976,13 +989,18 @@ $(document).ready(function () {
         }
 
         initMask(container) {
-            container.querySelectorAll('input[type="tel"]').forEach(function (el) {
-                VMasker(el).maskPattern("+9(999) 999-99-99");
-            });
+            // container.querySelectorAll('input[type="tel"]').forEach(function (el) {
+            //     VMasker(el).maskPattern("+9(999) 999-99-99");
+            // });
 
-            container.querySelectorAll('[data-input="number"]').forEach(function (el) {
-                VMasker(el).maskNumber();
-            });
+            // container.querySelectorAll('[data-input="number"]').forEach(function (el) {
+            //     VMasker(el).maskNumber();
+            // });
+
+
+
+            /* from global scope */
+            initMask(container);
         }
 
         initOnlinePopup(instanse) {
@@ -1163,13 +1181,12 @@ $(document).ready(function () {
             const pageTop = window.scrollY || window.pageYOffset
             const maxHeight = document.querySelector('.section-details-gallery').offsetHeight
 
-            if (DOMRect.top <= 30 && !current) {
+            if (DOMRect.top <= 30 && !current && pageTop < 150) {
                 form.classList.add('el-sticky')
                 current = pageTop;
             } else {
 
-                console.log(current, 'curent')
-                console.log(pageTop, 'ptop')
+                form.style.width = form.clientWidth + 'px'
 
                 if (current < pageTop && current) {
                     form.classList.add('el-sticky')
@@ -1189,6 +1206,7 @@ $(document).ready(function () {
 
     }
 
+    // show/hide button in mobile
 
     if (document.querySelector('.fixed-form')) {
 

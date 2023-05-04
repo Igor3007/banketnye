@@ -694,6 +694,11 @@ select {
   opacity: 1;
 }
 
+.select-options.active.select-options--top {
+  top: auto;
+  bottom: calc(100% + 10px);
+}
+
 .datepicker {
   display: none;
   color: #000;

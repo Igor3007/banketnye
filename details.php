@@ -218,7 +218,7 @@
                                 </div>
                             </div>
                             <div class="get-calculate__main">
-                                <div class="get-calculate__h3">Получить онлайн доступ</div>
+                                <div class="get-calculate__h3 emoji-stars">Получить онлайн доступ</div>
 
                                 <div class="get-calculate__feature">
                                     <ul>
@@ -888,9 +888,9 @@
 
     <div class="fixed-form is-hide">
         <div class="fixed-form__info">
-            <h6 class="fixed-form__title">Получить расчёт</h6>
+            <h6 class="fixed-form__title"><span>99 000 ₽</span> на <span>40 чел.</span></h6>
         </div>
-        <button class="fixed-form__btn btn" data-to="form-online">Отправить</button>
+        <button class="fixed-form__btn btn emoji-stars" data-to="form-online">Подробнее</button>
     </div>
 
 

@@ -425,3 +425,9 @@ select {
         }
     }
 }
+
+
+.select-options.active.select-options--top {
+    top: auto;
+    bottom: calc(100% + 10px);
+}
