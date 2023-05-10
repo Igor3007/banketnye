@@ -607,15 +607,11 @@ $(document).ready(function () {
         })
     }
 
-
-
     if (document.querySelector('.select-rating')) {
 
         /* ================================================
         drop
         ================================================*/
-
-
 
         const filesStorage = {};
 
